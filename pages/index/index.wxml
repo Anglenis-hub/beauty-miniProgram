@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="main">
+  <!-- <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <view class="swiper">
+    image
+    <view class="search-box">
+      <icon type="search" size="28" color="" class="search"></icon>
+      <input type="text" confirm-type="search" bindconfirm="onConfirm" value="{{value}}" class="input" bindfocus="inputfocus" bindblur="inputBlur" />
+      <view  class="clear" bindtap="clearClick">
+        <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
+      </view>
+         
+    </view>
+  </view>
+    <view class="icon-box">
+      <image bindtap="hairClick" src="/static/image/hair.png" mode='widthFix' class="icon" ></image>
+      <image bindtap="makeupClick" src="/static/image/makeup.png" mode='widthFix' class="icon"></image>
+      <image src="/static/image/gift.png" mode='widthFix' class="icon"></image>
+    </view>
+    <view class="recommanded">
+      <text class="recommanded-text">热门推荐</text>
+    </view>
+</view>

@@ -1,0 +1,80 @@
+/**index.wxss**/
+/* .userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+} */
+
+.main {
+  margin: 0;
+  height: 100vh;
+}
+.swiper {
+  height: 30vh;
+  width: 100vw;
+  /* border: 1rpx solid red; */
+  background-color: pink;
+}
+.search-box {
+  position: relative;
+  width: 90vw;
+  height: 60rpx;
+  margin: 20rpx auto;
+}
+.search {
+  position: absolute;
+  top: 7%;
+  left: 1%;
+}
+.input {
+  background-color: white;
+  /* border: 1px solid black; */
+  border-radius: 60rpx;
+  width: 80%;
+  height: 100%;
+  padding: 0 10%;
+}
+.clear {
+  position: absolute;
+  top: 22%;
+  left: 90%;
+}
+.icon-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 80rpx;
+  margin-top: 2vmax;
+}
+.icon {
+  width: 12vw;
+  /* height: 5vh; */
+  border: 0px solid black;
+  border-radius: 100%;
+  background-color: pink;
+}
+.show{
+  display: block;
+}
+.hide {
+  display: none;
+}
+.recommanded {
+  margin: 5vmax 2vmax 0;
+}
+.recommanded-text {
+  font-size: 35rpx;
+}

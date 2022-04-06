@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/self/self",
+    "pages/index/test"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#d81e06",
+    "borderStyle": "black",
+    "size": 20,
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首 页",
+        "iconPath": "static/image/home.png",
+        "selectedIconPath": "static/image/home.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日 志",
+        "iconPath": "static/image/log.png",
+        "selectedIconPath": "static/image/log.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "text": "我 的",
+        "iconPath": "static/image/self.png",
+        "selectedIconPath": "static/image/self.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
