@@ -44,5 +44,17 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  hairClick() {
+    // console.log(1111111111)
+    wx.switchTab({
+      url: '../logs/logs'
+    })
+  },
+  makeupClick() {
+    // console.log(1111111111)
+    wx.navigateTo({
+      url: '../index/test'
+    })
   }
 })
