@@ -22,16 +22,10 @@
   margin: 0;
   height: 100vh;
 }
-.swiper {
-  height: 30vh;
-  width: 100vw;
-  /* border: 1rpx solid red; */
-  background-color: pink;
-}
 .search-box {
   position: relative;
   width: 90vw;
-  height: 60rpx;
+  height: 65rpx;
   margin: 20rpx auto;
 }
 .search {
@@ -41,8 +35,9 @@
 }
 .input {
   background-color: white;
-  /* border: 1px solid black; */
-  border-radius: 60rpx;
+  border-radius: 20rpx;
+  background-color: gray;
+  opacity: 0.1;
   width: 80%;
   height: 100%;
   padding: 0 10%;
@@ -52,19 +47,31 @@
   top: 22%;
   left: 90%;
 }
-.icon-box {
+.tabs-box {
+  width: 89vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0 80rpx;
-  margin-top: 2vmax;
+  margin: 40rpx auto;
 }
-.icon {
-  width: 12vw;
-  /* height: 5vh; */
-  border: 0px solid black;
-  border-radius: 100%;
-  background-color: pink;
+.tab {
+  border: 2rpx solid rgb(68, 68, 68);
+  width: 33vw;
+  height: 65rpx;
+}
+.first-radius {
+  border-radius: 15rpx 0 0 15rpx;
+}
+.end-radius {
+  border-radius: 0 15rpx 15rpx 0;
+}
+.font {
+  text-align: center;
+  line-height: 65rpx;
+}
+.clicked-tab {
+  border: 3rpx solid rgb(68, 68, 68);
+  background-color: rgb(68, 68, 68);
+  color: white;
 }
 .show{
   display: block;
@@ -73,8 +80,19 @@
   display: none;
 }
 .recommanded {
-  margin: 5vmax 2vmax 0;
+  margin: 0vmax 2vmax;
 }
 .recommanded-text {
   font-size: 35rpx;
+}
+.image-box {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.img {
+  width: 46vw;
+  margin-bottom: 15rpx;
 }

@@ -20,23 +20,28 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view> -->
-  <view class="swiper">
-    image
-    <view class="search-box">
-      <icon type="search" size="28" color="" class="search"></icon>
-      <input type="text" confirm-type="search" bindconfirm="onConfirm" value="{{value}}" class="input" bindfocus="inputfocus" bindblur="inputBlur" />
-      <view  class="clear" bindtap="clearClick">
-        <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
-      </view>
-         
+  <view class="search-box">
+    <icon type="search" size="28" color="" class="search"></icon>
+    <input type="text" confirm-type="search" bindconfirm="onConfirm" value="{{value}}" class="input" bindfocus="inputfocus" bindblur="inputBlur" />
+    <view  class="clear" bindtap="clearClick">
+      <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
     </view>
   </view>
-    <view class="icon-box">
-      <image bindtap="hairClick" src="/static/image/hair.png" mode='widthFix' class="icon" ></image>
-      <image bindtap="makeupClick" src="/static/image/makeup.png" mode='widthFix' class="icon"></image>
-      <image src="/static/image/gift.png" mode='widthFix' class="icon"></image>
+  <view class="tabs-box">
+    <!-- <image bindtap="hairClick" src="/static/image/hair.png" mode='widthFix' class="icon" ></image>
+    <image bindtap="makeupClick" src="/static/image/makeup.png" mode='widthFix' class="icon"></image>
+    <image src="/static/image/gift.png" mode='widthFix' class="icon"></image> -->
+    <view bindtap="hairClick" class="tab first-radius font clicked-tab">发型</view>
+    <view class="tab font">彩妆</view>
+    <view class="tab end-radius font">美甲</view>
+  </view>
+  <view class="recommanded">
+    <text class="recommanded-text">热门推荐</text>
+    <view class="image-box">
+      <image bindtap="hairClick" src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+      <image bindtap="hairClick" src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+      <image bindtap="hairClick" src="/static/image/hair3.jpg" mode='widthFix' class="img"></image>
+      <image bindtap="hairClick" src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
     </view>
-    <view class="recommanded">
-      <text class="recommanded-text">热门推荐</text>
-    </view>
+  </view>
 </view>

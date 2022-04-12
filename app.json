@@ -25,7 +25,7 @@
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日 志",
+        "text": "收藏",
         "iconPath": "static/image/log.png",
         "selectedIconPath": "static/image/log.png"
       },
