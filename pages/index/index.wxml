@@ -35,8 +35,8 @@
     <view class="tab font">彩妆</view>
     <view class="tab end-radius font">美甲</view>
   </view>
-  <view class="recommanded">
-    <text class="recommanded-text">热门推荐</text>
+  <view class="recommanded"> 
+    <!-- <text class="recommanded-text">热门推荐</text> -->
     <view class="image-box">
       <image bindtap="hairClick" src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
       <image bindtap="hairClick" src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
