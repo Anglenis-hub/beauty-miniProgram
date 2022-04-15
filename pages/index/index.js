@@ -4,6 +4,13 @@ const app = getApp()
 
 Page({
   data: {
+    tabButton: {
+      hair:"发型", 
+      makeup:"彩妆", 
+      nail:"美甲"
+    },
+    num: 'hair',
+    isHidden:'none',
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -45,16 +52,16 @@ Page({
       hasUserInfo: true
     })
   },
-  hairClick() {
-    // console.log(1111111111)
-    wx.switchTab({
-      url: '../logs/logs'
-    })
-  },
-  makeupClick() {
-    // console.log(1111111111)
-    wx.navigateTo({
-      url: '../index/test'
-    })
+  onPageScroll(e) {
+    // console.log(e);
+    if(e.scrollTop !== 0) {
+      this.setData({
+        isHidden:'block'
+      })
+    }else {
+      this.setData({
+        isHidden:'none'
+      })
+    }
   }
 })

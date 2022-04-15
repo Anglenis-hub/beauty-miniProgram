@@ -1,0 +1,3 @@
+<view class="inner" bindtap="scrollTop">
+  {{btnFont}}
+</view>

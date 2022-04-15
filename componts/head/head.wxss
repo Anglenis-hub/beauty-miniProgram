@@ -1,0 +1,87 @@
+.main {
+  margin: 0;
+  height: 100vh;
+}
+.search-box {
+  position: relative;
+  width: 90vw;
+  height: 65rpx;
+  margin: 20rpx auto;
+}
+.search {
+  position: absolute;
+  top: 7%;
+  left: 1%;
+}
+.input-box {
+  /* color: black; */
+  border-radius: 20rpx;
+  background-color: rgb(114, 114, 114, 0.1);
+  width: 80%;
+  height: 100%;
+  padding: 0 10%;
+}
+.clear {
+  position: absolute;
+  top: 22%;
+  left: 90%;
+}
+.tabs-box {
+  width: 89vw;
+  display: flex;
+  flex-direction: row;
+  margin: 40rpx auto;
+}
+.tab {
+  border: 2rpx solid rgb(68, 68, 68);
+  width: 33vw;
+  height: 65rpx;
+}
+.first-radius {
+  border-radius: 15rpx 0 0 15rpx;
+}
+.end-radius {
+  border-radius: 0 15rpx 15rpx 0;
+}
+.font {
+  text-align: center;
+  line-height: 65rpx;
+}
+.clicked-tab {
+  border: 3rpx solid rgb(68, 68, 68);
+  background-color: rgb(68, 68, 68);
+  color: white;
+}
+.recommanded {
+  margin: 0vmax 2vmax;
+}
+.recommanded-text {
+  font-size: 35rpx;
+}
+.image-box {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.img {
+  width: 46vw;
+  margin-bottom: 15rpx;
+}
+
+page {
+  height: 2000rpx;
+}
+.inner {
+  width: 160rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  border-radius: 50%;
+  background-color: rgb(45, 150, 233);
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+}

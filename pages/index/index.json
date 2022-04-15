@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "首页",
-  "usingComponents": {}
+  "usingComponents": {
+    "Head": "../../componts/head/head",
+    "ScrollTop":"../../componts/scrollTop/scrollTop"
+  },
+  "component":true
 }

@@ -1,0 +1,15 @@
+page {
+  height: 2000rpx;
+}
+.inner {
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-radius: 50%;
+  background-color: rgba(114, 114, 114, 0.3);
+  text-align: center;
+  font-weight: bold;
+  position: fixed;
+  right: 40rpx;
+  bottom: 40rpx;
+}

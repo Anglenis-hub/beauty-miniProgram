@@ -1,0 +1,31 @@
+<view class="search-box">
+  <icon type="search" size="28" color="" class="search"></icon>
+  <input type="text" confirm-type="search" bindconfirm="onConfirm" value="{{value}}" class="input-box" bindfocus="inputfocus" bindblur="inputBlur" />
+  <view  class="clear" bindtap="clearClick">
+    <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
+  </view>
+</view>
+<view class="tabs-box">
+  <view bindtap="hairClick" class="tab first-radius font {{num==='hair'?'clicked-tab':''}}">{{ tabButton.hair }}</view>
+  <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
+  <view bindtap="nailClick" class="tab end-radius font {{num==='nail'?'clicked-tab':''}}">{{ tabButton.nail }}</view>
+</view>
+<view wx:if="{{num === 'hair'}}" class="recommanded"> 
+  <view class="image-box">
+    <image src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+    <image src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+    <image src="/static/image/hair3.jpg" mode='widthFix' class="img"></image>
+    <image src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+  </view>
+</view>
+<view wx:if="{{num === 'makeup'}}" class="recommanded"> 
+  <view class="image-box">
+    <image src="/static/image/hair3.jpg" mode='widthFix' class="img"></image>
+    <image src="/static/image/hair1.jpg" mode='widthFix' class="img"></image>
+  </view>
+</view>
+<view wx:if="{{num === 'nail'}}" class="recommanded"> 
+  <view class="image-box">
+    <image src="/static/image/hair3.jpg" mode='widthFix' class="img"></image>
+  </view>
+</view>
