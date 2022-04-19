@@ -2,7 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/self/self"
+    "pages/self/self",
+    "pages/information/information",
+    "pages/order/order",
+    "pages/orderResult/orderResult"
   ],
   "window":{
     "backgroundTextStyle":"light",

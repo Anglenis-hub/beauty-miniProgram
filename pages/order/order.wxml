@@ -1,0 +1,28 @@
+<view class="main">
+  <view class="order-box">
+    <view class="order-info">
+      <image src="../../static/image/hair1.jpg" mode="widthFix" class="order-img"></image>
+      <view class="details">
+        <view class="detail title">可爱甜美短发</view>
+        <view class="detail">耗时：60分钟</view>
+        <view class="detail">发型师：张三</view>
+        <view class="detail">价格：￥500</view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="order-time">
+      <view>
+        <!-- <image src="../../static/image/home.png" mode="widthFix" class="order-icon"></image> -->
+        <text>预约时间</text>
+      </view>
+      <text>></text>
+    </view>
+    <view class="line"></view>
+    <view class="order-time">
+      <text>手机号</text>
+      <input class="phone-number" placeholder="请填写手机号"/>
+    </view>
+    <view class="line"></view>
+  </view>
+  <button style="width: 90vw;" class="order-btn" bindtap="orderClick">立即预约</button>
+</view>

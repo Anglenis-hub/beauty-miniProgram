@@ -59,6 +59,7 @@
   font-size: 35rpx;
 }
 .image-box {
+  display: block;
   margin-top: 20rpx;
   display: flex;
   flex-direction: row;

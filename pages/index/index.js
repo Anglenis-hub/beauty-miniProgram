@@ -10,6 +10,9 @@ Page({
       nail:"美甲"
     },
     num: 'hair',
+    hairImgs: ["/static/image/hair1.jpg", "/static/image/hair1.jpg", "/static/image/hair3.jpg", "/static/image/hair1.jpg"],
+    makeupImgs: ["/static/image/hair3.jpg", "/static/image/hair1.jpg"],
+    nailImgs: ["/static/image/hair1.jpg", "/static/image/hair3.jpg"],
     isHidden:'none',
     motto: 'Hello World',
     userInfo: {},

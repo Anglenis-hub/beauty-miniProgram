@@ -10,6 +10,18 @@ Component({
     num: {
       type: String,
       value: ''
+    },
+    hairImgs: {
+      type: Array,
+      value: []
+    },
+    makeupImgs: {
+      type: Array,
+      value: []
+    },
+    nailImgs: {
+      type: Array,
+      value: []
     }
   },
   data: {
@@ -33,14 +45,27 @@ Component({
       this.setData({
         num: "nail"
       })
+    },
+    hairImgClick() {
+      wx.navigateTo({
+        url: '../../pages/information/information',
+        success:()=>{
+          wx.setNavigationBarTitle({
+            title: '详细信息'
+          })
+        }
+      })
     }
   },
   observers:{
     // 'tabButton': function(val){
     //   console.log(val)
     // },
-    'num': function(val){
-      console.log("head-num: "+val)
+    // 'num': function(val){
+    //   console.log("head-num: "+val)
+    // },
+    'hairImgs': function(e) {
+      console.log(e)
     }
   }
 })
