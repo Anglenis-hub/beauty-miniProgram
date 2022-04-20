@@ -1,9 +1,18 @@
 // index.js
 // 获取应用实例
 const app = getApp()
+const dbDriver = require('../../utils/util')
 
 Page({
   data: {
+    indexData: {
+      type: [],
+      sources: {
+        hairImgs: [],
+        makeupImgs: [],
+        nailImgs: []
+      }
+    },
     name: '',
     tabButton: {
       hair:"发型", 
@@ -35,22 +44,12 @@ Page({
         canIUseGetUserProfile: true
       })
     }
-    wx.cloud.init({
-      env: 'cloud1-2ghfekqc5cf347a4'
-    })
-    const db = wx.cloud.database({
-      //这个是环境ID不是环境名称
-      env: 'cloud1-2ghfekqc5cf347a4'
-    })
-    db.collection('table1').doc('1').get({
-      //如果查询成功的话
-      success: res => {
-        console.log(res.data)
-        this.setData({
-          name: res.data.name
-        })
-      }
-    })
+
+    // this.setData({
+    //   ['indexData.type']: dbDriver.getData('beautyTable', 'index').test1
+    // })
+    console.log(dbDriver.getData('beautyTable', 'index'))
+    // dbDriver.getData('beautyTable', 'index')
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
