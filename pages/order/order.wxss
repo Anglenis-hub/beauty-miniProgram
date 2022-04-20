@@ -9,7 +9,7 @@
   left: 50%;
   transform: translate(-50%, 0%);
   width: 90vw;
-  height: 57vh;
+  height: 690rpx;
   margin: 0rpx auto;
   border-radius: 30rpx;
   background-color: #fff;

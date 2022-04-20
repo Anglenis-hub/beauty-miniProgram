@@ -19,14 +19,14 @@
 </view>
 <view wx:if="{{num === 'makeup'}}" class="recommanded"> 
   <view class="image-box">
-    <view wx:for="{{makeupImgs}}" wx:for-item="item">
+    <view wx:for="{{makeupImgs}}" wx:for-item="item" wx:key="index">
       <image src="{{item}}" mode='widthFix' class="img"></image>
     </view>
   </view>
 </view>
 <view wx:if="{{num === 'nail'}}" class="recommanded"> 
   <view class="image-box">
-    <view wx:for="{{nailImgs}}" wx:for-item="item">
+    <view wx:for="{{nailImgs}}" wx:for-item="item" wx:key="index">
       <image src="{{item}}" mode='widthFix' class="img"></image>
     </view>
   </view>
