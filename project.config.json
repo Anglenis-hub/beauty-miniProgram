@@ -50,6 +50,7 @@
   "libVersion": "2.19.4",
   "appid": "wx49db3ec538de8665",
   "projectname": "miniprogram-1",
+  "cloudfunctionRoot": "cloudfunctions/",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -59,6 +60,7 @@
     "servePath": ""
   },
   "isGameTourist": false,
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

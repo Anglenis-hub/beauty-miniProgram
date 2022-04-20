@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="main">
-  {{indexData.type}}
+{{name}}
   <Head tabButton="{{tabButton}}" num="{{num}}" hairImgs="{{hairImgs}}" makeupImgs="{{makeupImgs}}" nailImgs="{{nailImgs}}" inputvalue="{{inputvalue}}"></Head>
 </view>
 <ScrollTop style="display:{{isHidden}}"></ScrollTop>
