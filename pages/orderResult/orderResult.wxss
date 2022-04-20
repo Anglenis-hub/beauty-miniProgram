@@ -1,0 +1,76 @@
+.main {
+  position: relative;
+  height: 100vh;  
+  background-color: rgb(165, 165, 165, 0.2);
+  padding: 0 50rpx;
+}
+.success-image {
+  width: 20vw;
+  position: absolute;
+  top: 5vh;
+  left: 50vw;
+  transform: translate(-50%, 0%);
+}
+.position {
+  width: 90vw;
+  position: absolute;
+  top: 22vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+}
+.success-text {
+  text-align:center;
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 100rpx;
+}
+.success-detail {
+  text-align: center;
+  font-size: 27rpx;
+  color: rgba(66, 66, 66, 0.7);
+}
+.order-box {
+  position: absolute;
+  top: 30vh;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 90vw;
+  height: auto;
+  margin: 0rpx auto;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.order-img {
+  width: 25vw;
+  margin-right: 30rpx;
+  border-radius: 25rpx;
+}
+.order-info {
+  display: flex;
+  flex-direction: row;
+  margin: 30rpx;
+}
+.details {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+.detail {
+  font-size: 22rpx;
+  line-height: 50rpx;
+  color: rgba(66, 66, 66, 0.8);
+}
+.title {
+  font-size: large;
+  margin-bottom: 20rpx;
+  color: #000;
+}
+.order-btn {
+  position: absolute;
+  top: 90%;
+  width: 90vw;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: rgb(219, 139, 159);
+  color: white;
+}

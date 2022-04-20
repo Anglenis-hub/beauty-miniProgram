@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    name: '',
     tabButton: {
       hair:"发型", 
       makeup:"彩妆", 
@@ -16,6 +17,7 @@ Page({
     isHidden:'none',
     motto: 'Hello World',
     userInfo: {},
+    inputvalue: '',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -24,7 +26,7 @@ Page({
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../collect/collect'
     })
   },
   onLoad() {
@@ -33,6 +35,22 @@ Page({
         canIUseGetUserProfile: true
       })
     }
+    wx.cloud.init({
+      env: 'cloud1-2ghfekqc5cf347a4'
+    })
+    const db = wx.cloud.database({
+      //这个是环境ID不是环境名称
+      env: 'cloud1-2ghfekqc5cf347a4'
+    })
+    db.collection('table1').doc('1').get({
+      //如果查询成功的话
+      success: res => {
+        console.log(res.data)
+        this.setData({
+          name: res.data.name
+        })
+      }
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

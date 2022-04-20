@@ -22,6 +22,10 @@ Component({
     nailImgs: {
       type: Array,
       value: []
+    },
+    inputvalue: {
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -55,17 +59,21 @@ Component({
           })
         }
       })
+    },
+    bindInputData: function(e){
+      this.setData({
+        inputvalue: e.detail.value
+      });
+    },
+    clearClick() {
+      this.setData({
+        inputvalue: ''
+      });
     }
   },
   observers:{
-    // 'tabButton': function(val){
-    //   console.log(val)
-    // },
-    // 'num': function(val){
-    //   console.log("head-num: "+val)
-    // },
-    'hairImgs': function(e) {
-      console.log(e)
+    'inputvalue': function(e) {
+      // console.log(e)
     }
   }
 })

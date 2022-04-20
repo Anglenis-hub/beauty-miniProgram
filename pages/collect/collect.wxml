@@ -1,16 +1,21 @@
-<view class="search-box">
-  <icon type="search" size="28" color="" class="search"></icon>
-  <input type="text" confirm-type="search" value="{{value}}" class="input-box" value="{{inputvalue}}" bindinput="bindInputData" />
-  <view  class="clear" bindtap="clearClick" >
-    <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
-  </view>
-</view>
+<!--collect.wxml-->
+<!-- <view class="main"> -->
 <view class="tabs-box">
-  <view bindtap="hairClick" class="tab first-radius font {{num==='hair'?'clicked-tab':''}}">{{ tabButton.hair }}</view>
+  <view bindtap="allClick" class="tab first-radius font {{num==='all'?'clicked-tab':''}}">{{ tabButton.all }}</view>
+  <view bindtap="hairClick" class="tab font {{num==='hair'?'clicked-tab':''}}">{{ tabButton.hair }}</view>
   <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
   <view bindtap="nailClick" class="tab end-radius font {{num==='nail'?'clicked-tab':''}}">{{ tabButton.nail }}</view>
 </view>
+<view wx:if="{{num === 'all'}}" class="recommanded"> 
+  <view class="collect-num">{{allImgs.length}}件</view>
+  <view class="image-box">
+    <view wx:for="{{allImgs}}" wx:for-item="item" wx:key="index">
+      <image src="{{item}}" mode='widthFix' class="img" bindtap="hairImgClick"></image>
+    </view>
+  </view>
+</view>
 <view wx:if="{{num === 'hair'}}" class="recommanded"> 
+  <view class="collect-num">{{hairImgs.length}}件</view>
   <view class="image-box">
     <view wx:for="{{hairImgs}}" wx:for-item="item" wx:key="index">
       <image src="{{item}}" mode='widthFix' class="img" bindtap="hairImgClick"></image>
@@ -18,6 +23,7 @@
   </view>
 </view>
 <view wx:if="{{num === 'makeup'}}" class="recommanded"> 
+  <view class="collect-num">{{makeupImgs.length}}件</view>
   <view class="image-box">
     <view wx:for="{{makeupImgs}}" wx:for-item="item">
       <image src="{{item}}" mode='widthFix' class="img"></image>
@@ -25,9 +31,12 @@
   </view>
 </view>
 <view wx:if="{{num === 'nail'}}" class="recommanded"> 
+  <view class="collect-num">{{nailImgs.length}}件</view>
   <view class="image-box">
     <view wx:for="{{nailImgs}}" wx:for-item="item">
       <image src="{{item}}" mode='widthFix' class="img"></image>
     </view>
   </view>
 </view>
+<ScrollTop style="display:{{isHidden}}"></ScrollTop>
+<!-- </view> -->

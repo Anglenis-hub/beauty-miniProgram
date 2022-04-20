@@ -1,3 +1,4 @@
 <view class="inner" bindtap="scrollTop">
-  {{btnFont}}
+  <image src="../../static/image/toTop.png" mode="widthFix" class="top-icon"></image>
+  <text class="top-text">顶部</text>
 </view>

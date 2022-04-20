@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/collect/collect",
     "pages/self/self",
     "pages/information/information",
     "pages/order/order",
@@ -14,28 +14,28 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "color": "#000",
-    "selectedColor": "#d81e06",
-    "borderStyle": "black",
+    "color": "#8e8e8e",
+    "selectedColor": "#db8b9f",
+    "borderStyle": "white",
     "size": 20,
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首 页",
         "iconPath": "static/image/home.png",
-        "selectedIconPath": "static/image/home.png"
+        "selectedIconPath": "static/image/homeFill.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/collect/collect",
         "text": "收藏",
-        "iconPath": "static/image/log.png",
-        "selectedIconPath": "static/image/log.png"
+        "iconPath": "static/image/collect.png",
+        "selectedIconPath": "static/image/collectFill1.png"
       },
       {
         "pagePath": "pages/self/self",
         "text": "我 的",
         "iconPath": "static/image/self.png",
-        "selectedIconPath": "static/image/self.png"
+        "selectedIconPath": "static/image/selfFill.png"
       }
     ]
   },

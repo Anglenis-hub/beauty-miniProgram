@@ -1,37 +1,8 @@
-.main {
-  margin: 0;
-  height: 100vh;
-}
-.search-box {
-  position: relative;
-  width: 90vw;
-  height: 65rpx;
-  margin: 20rpx auto;
-}
-.search {
-  position: absolute;
-  top: 7%;
-  left: 1%;
-}
-.input-box {
-  /* color: black; */
-  border-radius: 20rpx;
-  background-color: rgb(114, 114, 114, 0.1);
-  width: 80%;
-  height: 100%;
-  padding: 0 10%;
-}
-.clear {
-  /* width: 10vw; */
-  position: absolute;
-  top: 22%;
-  left: 90%;
-}
 .tabs-box {
-  width: 89vw;
+  width: 90vw;
+  margin: 40rpx auto;
   display: flex;
   flex-direction: row;
-  margin: 40rpx auto;
 }
 .tab {
   border: 2rpx solid white;
@@ -57,6 +28,14 @@
   background-color: rgb(219, 139, 159);
   /* background-color: rgb(68, 68, 68); */
   color: white;
+}
+.collect-num {
+  width: 90vw;
+  background-color: rgb(114, 114, 114, 0.2);
+  border-radius: 10rpx;
+  margin: 25rpx auto;
+  padding: 10rpx 0rpx 10rpx 20rpx;
+  line-height: 40rpx;
 }
 .recommanded {
   margin: 0vmax 2vmax;

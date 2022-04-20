@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="main">
-  <Head tabButton="{{tabButton}}" num="{{num}}" hairImgs="{{hairImgs}}" makeupImgs="{{makeupImgs}}" nailImgs="{{nailImgs}}"></Head>
+  {{name}}
+  <Head tabButton="{{tabButton}}" num="{{num}}" hairImgs="{{hairImgs}}" makeupImgs="{{makeupImgs}}" nailImgs="{{nailImgs}}" inputvalue="{{inputvalue}}"></Head>
 </view>
-<ScrollTop btnFont="Top" style="display:{{isHidden}}"></ScrollTop>
+<ScrollTop style="display:{{isHidden}}"></ScrollTop>
