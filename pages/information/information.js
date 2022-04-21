@@ -1,10 +1,23 @@
+import { getData } from '../../utils/database_driver'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    loveSrc: "../../static/image/love.png"
+    // address: "",
+    // number: "",
+    // price: "",
+    // shopName: "",
+    // staffInfo: "",
+    // staffName: "",
+    // time: "",
+    informations: [],
+    loveSrc: "../../static/image/love.png",
+    clickPassData: {
+      index: -1,
+      src: ""
+    }
   },
 
   loveClick() {
@@ -28,7 +41,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let clickPassData = JSON.parse(decodeURIComponent(options.clickPassData))
+    this.setData({
+      clickPassData: clickPassData
+    })
+    // console.log(this.data.clickPassData)
+    getData.getDataFromId('information').then(res => {
+      // console.log(res.data.informations)
+      this.setData({
+        informations: res.data.informations
+      })
+      // console.log(this.data.informations)
+    })
   },
 
   /**

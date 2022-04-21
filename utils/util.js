@@ -14,28 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : `0${n}`
 }
 
-const getData = (collection, id) => {
-  wx.cloud.init({
-    env: 'cloud1-2ghfekqc5cf347a4'
-  })
-  const db = wx.cloud.database({
-    //这个是环境ID不是环境名称
-    env: 'cloud1-2ghfekqc5cf347a4'
-  })
-  const _ = db.command
-  // db.collection(collection).doc(id).get().then(res => {
-  //   //如果查询成功的话
-  //     return res.data
-  // })
-}
-
-const testFun = () => {
-  let a = 'testData'
-  return a
+const scrollTop = () => {
+  if (wx.pageScrollTo) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  } else {
+    wx.showModal({
+      title: '提示',
+      content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试！'
+    })
+  }
 }
 
 module.exports = {
   formatTime,
-  testFun,
-  getData
+  scrollTop
 }

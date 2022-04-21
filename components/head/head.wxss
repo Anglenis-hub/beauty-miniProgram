@@ -2,6 +2,16 @@
   margin: 0;
   height: 100vh;
 }
+.head {
+  position: fixed;
+  top: 0rpx;
+  /* left: 5vw; */
+  width: 100vw;
+  height: 210rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  /* bottom: 40rpx; */
+}
 .search-box {
   position: relative;
   width: 90vw;
@@ -59,7 +69,7 @@
   color: white;
 }
 .recommanded {
-  margin: 0vmax 2vmax;
+  margin: 17vmax 2vmax;
 }
 .recommanded-text {
   font-size: 35rpx;
@@ -91,4 +101,10 @@ page {
   position: fixed;
   right: 40rpx;
   bottom: 40rpx;
+}
+.show {
+  display: block;
+}
+.hide {
+  display: none;
 }

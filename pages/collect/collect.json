@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "收藏",
   "usingComponents": {
-    "ScrollTop":"../../componts/scrollTop/scrollTop"
+    "ScrollTop":"../../components/scrollTop/scrollTop"
   }
 }

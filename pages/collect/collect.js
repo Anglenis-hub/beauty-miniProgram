@@ -48,5 +48,6 @@ Page({
         isHidden:'none'
       })
     }
-  }
+  },
+  
 })

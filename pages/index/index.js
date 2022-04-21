@@ -1,8 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-const dbDriver = require('../../utils/util')
-import { db } from '../../utils/database_driver'
+import { getData } from '../../utils/database_driver'
 
 Page({
   data: {
@@ -21,9 +20,9 @@ Page({
       nail:"美甲"
     },
     num: 'hair',
-    hairImgs: ["/static/image/hair1.jpg", "/static/image/hair1.jpg", "/static/image/hair3.jpg", "/static/image/hair1.jpg"],
-    makeupImgs: ["/static/image/hair3.jpg", "/static/image/hair1.jpg"],
-    nailImgs: ["/static/image/hair1.jpg", "/static/image/hair3.jpg"],
+    hairImgs: [],
+    makeupImgs: [],
+    nailImgs: [],
     isHidden:'none',
     motto: 'Hello World',
     userInfo: {},
@@ -46,9 +45,12 @@ Page({
       })
     }
 
-    db.getNmaeFromId('index').then(res => {
+    getData.getDataFromId('index').then(res => {
       this.setData({
-        name: res.data.type
+        name: res.data.type,
+        hairImgs:  res.data.sources.hairImgs,
+        makeupImgs:  res.data.sources.makeupImgs,
+        nailImgs:  res.data.sources.nailImgs
       })
     })
   },
