@@ -33,7 +33,7 @@ Component({
   },
   data: {
     clearShow: false,
-    clickPassData: {}
+    clickPassIndex: -1
   },
   /**
    * 组件的方法列表
@@ -64,13 +64,12 @@ Component({
       })
     },
     hairImgClick: function(e) {
-      // console.log(e.currentTarget.dataset)
-      this.setData({
-        clickPassData: e.currentTarget.dataset
-      }),
-      // console.log(this.data.clickPassData)
+      console.log('e.currentTarget.dataset',e.currentTarget.dataset.index)
+      let clickPassIndex = e.currentTarget.dataset.index
+      wx.setStorageSync('clickPassIndex', clickPassIndex)
+      // console.log('clickPassIndex:',clickPassIndex)
       wx.navigateTo({
-        url: '../../pages/information/information?clickPassData=' + encodeURIComponent(JSON.stringify(this.data.clickPassData)),
+        url: '../../pages/information/information',
         success:()=>{
           wx.setNavigationBarTitle({
             title: '详细信息'
@@ -91,7 +90,7 @@ Component({
   },
   observers:{
     'inputvalue': function(e) {
-      console.log(e)
+      // console.log(e)
       if(e) {
         this.setData ({
           clearShow: true
@@ -103,7 +102,7 @@ Component({
       }
     },
     'num': function (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 })

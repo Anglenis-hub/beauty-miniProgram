@@ -1,2 +1,14 @@
 <!--pages/self/self.wxml-->
-<text>pages/self/self.wxml</text>
+<view class="main"> 
+  <view class="head">111</view>
+  <view class="my-things">
+    <view class="my-thing">
+      <text>我的信息</text>
+      <text>></text>
+    </view>
+    <view class="my-thing">
+      <text>我的预约</text>
+      <text>></text>
+    </view>
+  </view>
+</view>

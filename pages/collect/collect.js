@@ -1,5 +1,6 @@
 // collect.js
 const util = require('../../utils/util.js')
+import { getData } from '../../utils/database_driver'
 
 Page({
   data: {
@@ -10,11 +11,21 @@ Page({
       nail:"美甲"
     },
     num: 'all',
-    allImgs: ["/static/image/hair1.jpg", "/static/image/hair1.jpg", "/static/image/hair3.jpg", "/static/image/hair1.jpg", "/static/image/hair1.jpg", "/static/image/hair3.jpg", "/static/image/hair1.jpg"],
-    hairImgs: ["/static/image/hair1.jpg", "/static/image/hair1.jpg", "/static/image/hair3.jpg", "/static/image/hair1.jpg"],
-    makeupImgs: ["/static/image/hair3.jpg", "/static/image/hair1.jpg"],
-    nailImgs: ["/static/image/hair1.jpg", "/static/image/hair3.jpg"],
+    allImgs: [],
+    hairImgs: [],
+    makeupImgs: [],
+    nailImgs: [],
     isHidden:'none'
+  },
+
+  onLoad: function (options) {
+    getData.getDataFromId('collect').then(res => {
+      console.log(res.data.hairImgs)
+      this.setData({
+        allImgs: res.data.allImgs,
+        hairImgs: res.data.hairImgs
+      })
+    })
   },
 
   allClick() {
@@ -37,6 +48,22 @@ Page({
       num: "nail"
     })
   },
+    
+  // hairImgClick: function(e) {
+  //   // console.log(e.currentTarget.dataset)
+  //   this.setData({
+  //     clickPassData: e.currentTarget.dataset
+  //   }),
+  //   // console.log(this.data.clickPassData)
+  //   wx.navigateTo({
+  //     url: '../../pages/information/information?clickPassData=' + encodeURIComponent(JSON.stringify(this.data.clickPassData)),
+  //     success:()=>{
+  //       wx.setNavigationBarTitle({
+  //         title: '详细信息'
+  //       })
+  //     }
+  //   })
+  // },
   onPageScroll(e) {
     // console.log(e);
     if(e.scrollTop !== 0) {

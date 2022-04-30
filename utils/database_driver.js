@@ -4,10 +4,12 @@ wx.cloud.init({
 const tableName = 'beautyTable'
 const db = wx.cloud.database()
 const _ = db.command
-// let name = ''
 
 export const getData = {
     getDataFromId(id) {
         return db.collection(tableName).doc(id).get()
+    },
+    database() {
+      return db.collection(tableName)
     }
 }
