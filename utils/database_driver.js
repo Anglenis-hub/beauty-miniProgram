@@ -19,7 +19,7 @@ export const getData = {
 export const signIn = (name, pwd) => {
   db.collection(tableName).doc('userInfo').update({
     data: {
-      users: _.push({username: name, password: pwd, collection: []})
+      users: _.push({username: name, password: pwd, collections: []})
     },
     sucess: function(res) {
       console.log(res.data)
@@ -47,8 +47,4 @@ export const update = (id, key, updateData) => {
       console.log(res.data)
     }
   })
-}
-//删除数据
-export const remove = () => {
-
 }

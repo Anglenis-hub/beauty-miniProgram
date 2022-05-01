@@ -40,13 +40,8 @@ Page({
     console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
     if(this.data.informations[clickPassType][clickPassIndex].love === false) {
       dbutils.getData.getDataFromId('userInfo').then(res => {
-        console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
         let temp = res.data.users
-        let inserData = {
-          class: clickPassType,
-          itemId: clickPassIndex,
-          isDeleted: false
-        }
+        let inserData = { class: clickPassType, itemId: clickPassIndex, isDeleted: false }
         for(let i = 0; i<temp.length; i++) {
           if(temp[i].username === 'userA') {
             this.setData({
@@ -54,14 +49,14 @@ Page({
             })
           }
         }
-        console.log(this.data.index)  
-        dbutils.insert('userInfo', `users.${this.data.index}.collections`, inserData)
+        dbutils.insert('userInfo', `users.${this.data.index}.collections`, inserData) //将此图片及其信息插入userInfo表中对应用户的collections对象中
       }) 
-      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, true)
+      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, true)//将爱心状态改为收藏实心
     } else {
       dbutils.getData.getDataFromId('userInfo').then(res => {
         console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
         let temp = res.data.users
+        console.log('temp', temp)
         for(let i = 0; i<temp.length; i++) {
           if(temp[i].username === 'userA') {
             this.setData({
@@ -69,16 +64,18 @@ Page({
             })
           }
         }
-        console.log(this.data.index)  
-        
+        for (let j = 0; j < temp[this.data.index].collections.length; j++) {
+          if (temp[this.data.index].collections[j].itemId === clickPassIndex) {
+            temp[this.data.index].collections.splice(j, 1);
+          }
+        }  
+        dbutils.update('userInfo', `users.${this.data.index}.collections`, temp[this.data.index].collections)//取消收藏：将此图片及其信息在userInfo表中对应用户的collections对象中删除
       }) 
-      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, false)
+      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, false)//将爱心状态改为空心
     }
     wx.redirectTo({
       url: '../information/information',
     })
-    // console.log(this.data.informations[this.data.clickPassIndex].love)
-    // this.onLoad()
   },
   orderClick() {
     wx.navigateTo({
