@@ -1,4 +1,4 @@
-import { getData } from '../../utils/database_driver'
+const dbutils = require('../../utils/database_driver')
 Page({
 
   /**
@@ -15,21 +15,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     let clickPassIndex = wx.getStorageSync('clickPassIndex')
     this.setData({
       clickPassIndex: clickPassIndex
     })
-    getData.getDataFromId('information').then(res => {
+    dbutils.getData.getDataFromId('information').then(res => {
       console.log(res.data.informations)
       this.setData({
         informations: res.data.informations
       })
-      // console.log(this.data.informations)
     }) 
   }, 
   loveClick() {
-    let that = this
     wx.cloud.init({
       env: 'cloud1-2ghfekqc5cf347a4'  
     })
@@ -51,16 +49,17 @@ Page({
           
         }
       })
+      dbutils.insert('collect', 'allImgs', this.data.informations[this.data.clickPassIndex].ImgSrc)
       // console.log(this.data.informations)
-      db.collection(tableName).doc('collect').update({
-        data: {
-          allImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc),
-          hairImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc)
-        },
-        sucess: function(res) {
-          console.log(res.data)
-        }
-      })
+      // db.collection(tableName).doc('collect').update({
+      //   data: {
+      //     allImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc),
+      //     hairImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc)
+      //   },
+      //   sucess: function(res) {
+      //     console.log(res.data)
+      //   }
+      // })
     } else {
       db.collection(tableName).doc('information').update({
         data: {
@@ -81,11 +80,11 @@ Page({
         }
       })
     }
-    that.onLoad();
-    console.log(this.data.informations[this.data.clickPassIndex].love)
-    // wx.({
+    // wx.redirectTo({
     //   url: '../information/information',
     // })
+    // console.log(this.data.informations[this.data.clickPassIndex].love)
+    this.onLoad()
   },
   orderClick() {
     wx.navigateTo({
@@ -97,7 +96,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

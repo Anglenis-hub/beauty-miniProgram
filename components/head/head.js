@@ -1,5 +1,5 @@
-import { getData } from '../../utils/database_driver'
 const utils = require('../../utils/util')
+const dbutils = require('../../utils/database_driver')
 
 Component({
   /**

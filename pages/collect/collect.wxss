@@ -38,22 +38,27 @@
   line-height: 40rpx;
 }
 .recommanded {
-  margin: 0vmax 2vmax;
+  /* margin: 0vmax 2vmax; */
 }
 .recommanded-text {
   font-size: 35rpx;
 }
+.collect-image {
+  /* height: 900rpx; */
+  column-count: 2;
+  column-width: 45vw;
+  column-gap: 25rpx;
+  margin: 10rpx 2vmax;
+}
 .image-box {
-  display: block;
-  margin-top: 20rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  break-inside: avoid;
+  background: #fff;
 }
 .img {
-  width: 46vw;
+  width: 45vw;
+  border-radius: 10rpx;
   margin-bottom: 15rpx;
+  vertical-align: middle;
 }
 
 page {

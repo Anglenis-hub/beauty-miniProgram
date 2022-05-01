@@ -1,7 +1,7 @@
 // index.js
 // 获取应用实例
 const app = getApp()
-import { getData } from '../../utils/database_driver'
+const dbutils = require('../../utils/database_driver')
 
 Page({
   data: {
@@ -45,7 +45,7 @@ Page({
       })
     }
 
-    getData.getDataFromId('index').then(res => {
+    dbutils.getData.getDataFromId('index').then(res => {
       this.setData({
         name: res.data.type,
         hairImgs:  res.data.sources.hairImgs,

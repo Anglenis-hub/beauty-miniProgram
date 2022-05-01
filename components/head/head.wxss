@@ -68,7 +68,6 @@
   color: white;
 }
 .recommanded {
-  /* height: 100vh; */
   column-count: 2;
   column-width: 45vw;
   column-gap: 2vw;

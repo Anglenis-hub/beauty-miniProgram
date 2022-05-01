@@ -16,9 +16,9 @@
 </view>
 <view wx:if="{{num === 'hair'}}" class="recommanded"> 
   <view class="collect-num">{{hairImgs.length}}件</view>
-  <view class="image-box">
-    <view wx:for="{{hairImgs}}" wx:for-item="item" wx:key="index">
-      <image src="{{item}}" mode='widthFix' class="img" bindtap="hairImgClick"></image>
+  <view class="collect-image">
+    <view wx:for="{{collection}}" wx:for-item="item" wx:key="index" class="image-box">
+      <image src="{{informations[item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="hairImgClick"></image>
     </view>
   </view>
 </view>

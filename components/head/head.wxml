@@ -14,20 +14,16 @@
 </view>
 <view wx:if="{{num === 'hair'}}" class="recommanded"> 
   <view class="image-box" wx:for="{{hairImgs}}" wx:for-item="item" wx:key="index">
-    <image src="{{item}}" mode='widthFix' class="img" bindtap="hairImgClick" data-index="{{index}}" data-src="{{item}}"></image>
+    <image src="{{item}}" mode='widthFix' class="img" bindtap="hairImgClick" data-index="{{index}}"></image>
   </view>
 </view>
 <view wx:if="{{num === 'makeup'}}" class="recommanded"> 
-  <view class="image-box">
-    <view wx:for="{{makeupImgs}}" wx:for-item="item" wx:key="index">
-      <image src="{{item}}" mode='widthFix' class="img"></image>
-    </view>
+  <view class="image-box" wx:for="{{makeupImgs}}" wx:for-item="item" wx:key="index">
+    <image src="{{item}}" mode='widthFix' class="img"></image>
   </view>
 </view>
 <view wx:if="{{num === 'nail'}}" class="recommanded"> 
-  <view class="image-box">
-    <view wx:for="{{nailImgs}}" wx:for-item="item" wx:key="index">
-      <image src="{{item}}" mode='widthFix' class="img"></image>
-    </view>
+  <view class="image-box" wx:for="{{nailImgs}}" wx:for-item="item" wx:key="index">
+    <image src="{{item}}" mode='widthFix' class="img"></image>
   </view>
 </view>
