@@ -13,3 +13,13 @@ export const getData = {
       return db.collection(tableName)
     }
 }
+export const signIn = (name, pwd) => {
+  db.collection(tableName).doc('userInfo').update({
+    data: {
+      users: _.push({username: name, password: pwd, collection: {}})
+    },
+    sucess: function(res) {
+      console.log(res.data)
+    }
+  })
+}

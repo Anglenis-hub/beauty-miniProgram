@@ -1,6 +1,8 @@
 <!--pages/self/self.wxml-->
 <view class="main"> 
-  <view class="head">111</view>
+  <view class="head">
+    <button bindtap="sign">点击用户注册</button>
+  </view>
   <view class="my-things">
     <view class="my-thing">
       <text>我的信息</text>
