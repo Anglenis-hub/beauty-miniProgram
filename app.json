@@ -6,7 +6,8 @@
     "pages/information/information",
     "pages/order/order",
     "pages/orderResult/orderResult",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/collectInformation/collectInformation"
   ],
   "window":{
     "backgroundTextStyle":"light",

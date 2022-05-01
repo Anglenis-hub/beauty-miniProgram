@@ -2,7 +2,20 @@
 // 获取应用实例
 const app = getApp()
 const dbutils = require('../../utils/database_driver')
-let arr = []
+let arr = [{
+  ImgSrc: '/static/image/nail1.jpg',
+  address: '下沙街道',
+  love: false,
+  loveImg: '../../static/image/love.png',
+  price: 100,
+  shopImgSrc: '../../static/image/hairshop1.jpg',
+  shopName: '3A美甲店',
+  staffImgSrc: '../../static/image/hair2.jpg',
+  staffInfo: '111111',
+  staffName: '小红',
+  time: '周一~周日10：00-22：00',
+  title: '可爱甜美短发'
+}]
 
 Page({
   data: {

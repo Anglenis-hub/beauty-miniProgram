@@ -1,0 +1,28 @@
+<view class="main">
+  <image src="{{informations[passCollectType][passCollectIndex].ImgSrc}}" mode="widthFix" class="head-img"></image>
+  <view class="description-love">
+    <text class="description">{{informations[passCollectType][passCollectIndex].title}}</text>
+    <!-- <view wx:if="{{informations[passCollectType][passCollectIndex].love === true}}"><image src="../../static/image/loved.png" mode="widthFix" class="love" bindtap="loveClick"></image></view>
+    <view wx:else><image src="../../static/image/love.png" mode="widthFix" class="love" bindtap="loveClick"></image></view> -->
+    <image src="{{informations[passCollectType][passCollectIndex].loveImg}}" value="{{loveImg}}" mode="widthFix" class="love" bindtap="loveClick"></image>
+  </view>
+  <view class="information-head">门店信息</view>
+  <view class="information-name">{{informations[passCollectType][passCollectIndex].shopName}}</view>
+  <view class="store">
+    <image src="{{informations[passCollectType][passCollectIndex].shopImgSrc}}" class="store-img"></image>
+    <view class="details">
+      <view class="detail">地址：{{informations[passCollectType][passCollectIndex].address}}</view>
+      <view class="detail">人均消费：￥{{informations[passCollectType][passCollectIndex].price}}</view>
+      <view class="detail">营业时间：{{informations[passCollectType][passCollectIndex].time}}</view>
+    </view>
+  </view>    
+  <view class="information-head">发型师信息</view>
+  <view class="store">
+    <image src="{{informations[passCollectType][passCollectIndex].staffImgSrc}}" mode="widthFix" class="staff-img"></image>
+    <view class="details">
+      <view class="staff-name">{{informations[passCollectType][passCollectIndex].staffName}}</view>
+      <view class="staff-information">{{informations[passCollectType][passCollectIndex].staffInfo}}</view>
+    </view>
+  </view>
+  <button style="width: 90vw;" class="order-btn" bindtap="orderClick">预约</button>
+</view>

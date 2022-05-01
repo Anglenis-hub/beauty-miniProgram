@@ -1,5 +1,5 @@
 page {
-  height: 2000rpx;
+  height: 1000rpx;
 }
 .inner {
   width: 100rpx;

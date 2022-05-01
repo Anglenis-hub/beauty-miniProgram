@@ -65,7 +65,7 @@ Component({
       })
     },
     imgClick: function(e) {
-      console.log('e.currentTarget.dataset',e.currentTarget.dataset)
+      // console.log('e.currentTarget.dataset',e.currentTarget.dataset)
       let clickPassIndex = e.currentTarget.dataset.index
       let clickPassType = e.currentTarget.dataset.type
       wx.setStorageSync('clickPassIndex', clickPassIndex)

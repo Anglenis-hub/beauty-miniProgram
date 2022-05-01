@@ -17,18 +17,17 @@ Page({
     nailCount: 0,
     isHidden:'none',
     informations: [],
-    collection: []
+    collection: [],
+    passCollectIndex: -1,
+    passCollectType: ''
   },
-
   onLoad: function () {
     dbutils.getData.getDataFromId('information').then(res => {
-      // console.log(res.data.informations)
       this.setData({
         informations: res.data.informations
       })
     }) 
     dbutils.getData.getDataFromId('userInfo').then(res => {
-      console.log(res.data)
       for(let i=0; i<res.data.users.length; i++){
         if(res.data.users[i].username === 'Amy') {
           let tempCollection = res.data.users[i].collections
@@ -51,22 +50,25 @@ Page({
         makeupCount: this.data.makeupCount,
         nailCount: this.data.nailCount
       })
-      console.log(this.data.hairCount)
-      // console.log(this.data.collection)
     })
-    dbutils.getData.getDataFromId('collect').then(res => {
-      // console.log(res.data.hairImgs)
-      this.setData({
-        allImgs: res.data.allImgs,
-        hairImgs: res.data.hairImgs
-      })
-    })
-    this.setData({
-      allImgs: this.data.hairImgs + this.data.makeupImgs + this.data.nailImgs
-    })
-    console.log(this.data.hairImgs)
+    console.log('informations:',this.data.informations, 'collection:', this.data.collection)
   },
-
+  imgClick: function(e) {
+    // console.log('e.currentTarget.dataset',e.currentTarget.dataset)
+    let passCollectIndex = e.currentTarget.dataset.index
+    let passCollectType = e.currentTarget.dataset.type
+    wx.setStorageSync('passCollectIndex', passCollectIndex)
+    wx.setStorageSync('passCollectType', passCollectType)
+    console.log('passCollectIndex:',passCollectIndex,'passCollectType:',passCollectType)
+    wx.navigateTo({
+      url: '../../pages/collectInformation/collectInformation',
+      success:()=>{
+        wx.setNavigationBarTitle({
+          title: '信息'
+        })
+      }
+    })
+  },
   allClick() {
     this.setData({
       num: "all"
@@ -99,6 +101,7 @@ Page({
       })
     }
   },
+
   onReady: function () {
   },
   

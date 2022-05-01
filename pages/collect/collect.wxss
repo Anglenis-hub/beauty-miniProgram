@@ -44,7 +44,7 @@
   /* height: 900rpx; */
   column-count: 2;
   column-width: 45vw;
-  column-gap: 25rpx;
+  column-gap: 2vw;
   margin: 10rpx 2vmax;
 }
 .image-box {

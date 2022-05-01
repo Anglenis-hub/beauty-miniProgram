@@ -23,8 +23,6 @@ Page({
     })
     // console.log(clickPassIndex, clickPassType)
     dbutils.getData.getDataFromId('information').then(res => {
-    console.log(clickPassIndex, clickPassType)
-    console.log(res.data.informations)
       let temp = this.data.informations
       temp.hair = res.data.informations.hair
       temp.makeup = res.data.informations[clickPassType]
@@ -33,61 +31,63 @@ Page({
         informations: temp
       })
     }) 
-    console.log('informations', this.data.informations)
+    console.log('informations:',this.data.informations)
   }, 
-  loveClick() {
-    wx.cloud.init({
-      env: 'cloud1-2ghfekqc5cf347a4'  
-    })
-    const tableName = 'beautyTable'
-    const db = wx.cloud.database()
-    const _ = db.command
-    if(this.data.informations[this.data.clickPassIndex].love === false){
-      console.log(this.data.clickPassIndex)
-      db.collection(tableName).doc('information').update({
-        data: {
-          [`informations.${this.data.clickPassIndex}.love`]: true,
-          [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/loved.png"
-        },
-        sucess: function(res) {
-          console.log(res.data[this.data.clickPassIndex].loveImg)
-          this.setData({
-            loveImg: res.data[this.data.clickPassIndex].loveImg
-          })
+  loveClick: function(e) {
+    let clickPassType = this.data.clickPassType
+    console.log('clickPassType:', clickPassType)
+      // wx.cloud.init({
+    //   env: 'cloud1-2ghfekqc5cf347a4'  
+    // })
+    // const tableName = 'beautyTable'
+    // const db = wx.cloud.database()
+    // const _ = db.command
+    // if(this.data.informations[this.data.clickPassIndex].love === false){
+    //   console.log(this.data.clickPassIndex)
+    //   db.collection(tableName).doc('information').update({
+    //     data: {
+    //       [`informations.${this.data.clickPassIndex}.love`]: true,
+    //       [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/loved.png"
+    //     },
+    //     sucess: function(res) {
+    //       console.log(res.data[this.data.clickPassIndex].loveImg)
+    //       this.setData({
+    //         loveImg: res.data[this.data.clickPassIndex].loveImg
+    //       })
           
-        }
-      })
-      dbutils.insert('collect', 'allImgs', this.data.informations[this.data.clickPassIndex].ImgSrc)
-      // console.log(this.data.informations)
-      // db.collection(tableName).doc('collect').update({
-      //   data: {
-      //     allImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc),
-      //     hairImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc)
-      //   },
-      //   sucess: function(res) {
-      //     console.log(res.data)
-      //   }
-      // })
-    } else {
-      db.collection(tableName).doc('information').update({
-        data: {
-          [`informations.${this.data.clickPassIndex}.love`]: false,
-          [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/love.png"
-        },
-        sucess: function(res) {
-          console.log(res.data)
-        }
-      })
-      db.collection(tableName).doc('collect').update({
-        data: {
-          allImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc),
-          hairImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc)
-        },
-        sucess: function(res) {
-          console.log(res.data)
-        }
-      })
-    }
+    //     }
+    //   })
+    //   dbutils.insert('collect', 'allImgs', this.data.informations[this.data.clickPassIndex].ImgSrc)
+    //   // console.log(this.data.informations)
+    //   // db.collection(tableName).doc('collect').update({
+    //   //   data: {
+    //   //     allImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc),
+    //   //     hairImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc)
+    //   //   },
+    //   //   sucess: function(res) {
+    //   //     console.log(res.data)
+    //   //   }
+    //   // })
+    // } else {
+    //   db.collection(tableName).doc('information').update({
+    //     data: {
+    //       [`informations.${this.data.clickPassIndex}.love`]: false,
+    //       [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/love.png"
+    //     },
+    //     sucess: function(res) {
+    //       console.log(res.data)
+    //     }
+    //   })
+    //   db.collection(tableName).doc('collect').update({
+    //     data: {
+    //       allImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc),
+    //       hairImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc)
+    //     },
+    //     sucess: function(res) {
+    //       console.log(res.data)
+    //     }
+    //   })
+    // }
     // wx.redirectTo({
     //   url: '../information/information',
     // })
