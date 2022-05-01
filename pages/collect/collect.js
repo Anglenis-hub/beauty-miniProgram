@@ -29,7 +29,7 @@ Page({
     }) 
     dbutils.getData.getDataFromId('userInfo').then(res => {
       for(let i=0; i<res.data.users.length; i++){
-        if(res.data.users[i].username === 'Amy') {
+        if(res.data.users[i].username === 'userA') {
           let tempCollection = res.data.users[i].collections
           this.setData({
             collection: tempCollection
@@ -64,7 +64,7 @@ Page({
       url: '../../pages/collectInformation/collectInformation',
       success:()=>{
         wx.setNavigationBarTitle({
-          title: '信息'
+          title: '详细信息'
         })
       }
     })

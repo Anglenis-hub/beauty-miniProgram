@@ -2,9 +2,8 @@
   <image src="{{informations[passCollectType][passCollectIndex].ImgSrc}}" mode="widthFix" class="head-img"></image>
   <view class="description-love">
     <text class="description">{{informations[passCollectType][passCollectIndex].title}}</text>
-    <!-- <view wx:if="{{informations[passCollectType][passCollectIndex].love === true}}"><image src="../../static/image/loved.png" mode="widthFix" class="love" bindtap="loveClick"></image></view>
-    <view wx:else><image src="../../static/image/love.png" mode="widthFix" class="love" bindtap="loveClick"></image></view> -->
-    <image src="{{informations[passCollectType][passCollectIndex].loveImg}}" value="{{loveImg}}" mode="widthFix" class="love" bindtap="loveClick"></image>
+    <view wx:if="{{informations[passCollectType][passCollectIndex].love === true}}"><image src="../../static/image/loved.png" mode="widthFix" class="love" bindtap="loveClick"></image></view>
+    <view wx:else><image src="../../static/image/love.png" mode="widthFix" class="love" bindtap="loveClick"></image></view>
   </view>
   <view class="information-head">门店信息</view>
   <view class="information-name">{{informations[passCollectType][passCollectIndex].shopName}}</view>

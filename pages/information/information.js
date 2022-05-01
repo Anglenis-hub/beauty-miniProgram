@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    index: 0,
     informations: {},
     loveSrc: "../../static/image/love.png",
     loveImg: "../../static/image/love.png",
@@ -31,68 +32,53 @@ Page({
         informations: temp
       })
     }) 
-    console.log('informations:',this.data.informations)
+    // console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
   }, 
   loveClick: function(e) {
+    let clickPassIndex = this.data.clickPassIndex
     let clickPassType = this.data.clickPassType
-    console.log('clickPassType:', clickPassType)
-      // wx.cloud.init({
-    //   env: 'cloud1-2ghfekqc5cf347a4'  
-    // })
-    // const tableName = 'beautyTable'
-    // const db = wx.cloud.database()
-    // const _ = db.command
-    // if(this.data.informations[this.data.clickPassIndex].love === false){
-    //   console.log(this.data.clickPassIndex)
-    //   db.collection(tableName).doc('information').update({
-    //     data: {
-    //       [`informations.${this.data.clickPassIndex}.love`]: true,
-    //       [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/loved.png"
-    //     },
-    //     sucess: function(res) {
-    //       console.log(res.data[this.data.clickPassIndex].loveImg)
-    //       this.setData({
-    //         loveImg: res.data[this.data.clickPassIndex].loveImg
-    //       })
-          
-    //     }
-    //   })
-    //   dbutils.insert('collect', 'allImgs', this.data.informations[this.data.clickPassIndex].ImgSrc)
-    //   // console.log(this.data.informations)
-    //   // db.collection(tableName).doc('collect').update({
-    //   //   data: {
-    //   //     allImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc),
-    //   //     hairImgs: _.push(this.data.informations[this.data.clickPassIndex].ImgSrc)
-    //   //   },
-    //   //   sucess: function(res) {
-    //   //     console.log(res.data)
-    //   //   }
-    //   // })
-    // } else {
-    //   db.collection(tableName).doc('information').update({
-    //     data: {
-    //       [`informations.${this.data.clickPassIndex}.love`]: false,
-    //       [`informations.${this.data.clickPassIndex}.loveImg`]: "../../static/image/love.png"
-    //     },
-    //     sucess: function(res) {
-    //       console.log(res.data)
-    //     }
-    //   })
-    //   db.collection(tableName).doc('collect').update({
-    //     data: {
-    //       allImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc),
-    //       hairImgs: _.pop(this.data.informations[this.data.clickPassIndex].ImgSrc)
-    //     },
-    //     sucess: function(res) {
-    //       console.log(res.data)
-    //     }
-    //   })
-    // }
-    // wx.redirectTo({
-    //   url: '../information/information',
-    // })
+    console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
+    if(this.data.informations[clickPassType][clickPassIndex].love === false) {
+      dbutils.getData.getDataFromId('userInfo').then(res => {
+        console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
+        let temp = res.data.users
+        let inserData = {
+          class: clickPassType,
+          itemId: clickPassIndex,
+          isDeleted: false
+        }
+        for(let i = 0; i<temp.length; i++) {
+          if(temp[i].username === 'userA') {
+            this.setData({
+              index: i
+            })
+          }
+        }
+        console.log(this.data.index)  
+        dbutils.insert('userInfo', `users.${this.data.index}.collections`, inserData)
+      }) 
+      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, true)
+    } else {
+      dbutils.getData.getDataFromId('userInfo').then(res => {
+        console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
+        let temp = res.data.users
+        for(let i = 0; i<temp.length; i++) {
+          if(temp[i].username === 'userA') {
+            this.setData({
+              index: i
+            })
+          }
+        }
+        console.log(this.data.index)  
+        
+      }) 
+      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, false)
+    }
+    wx.redirectTo({
+      url: '../information/information',
+    })
     // console.log(this.data.informations[this.data.clickPassIndex].love)
-    this.onLoad()
+    // this.onLoad()
   },
   orderClick() {
     wx.navigateTo({

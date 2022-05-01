@@ -37,3 +37,18 @@ export const insert = (id, arr, insertData) => {
     }
   })
 }
+//更新数据
+export const update = (id, key, updateData) => {
+  db.collection(tableName).doc(id).update({
+    data: {
+      [key]: updateData
+    },
+    sucess: function(res) {
+      console.log(res.data)
+    }
+  })
+}
+//删除数据
+export const remove = () => {
+
+}
