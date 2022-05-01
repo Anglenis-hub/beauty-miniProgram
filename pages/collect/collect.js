@@ -12,9 +12,9 @@ Page({
     },
     num: 'all',
     allImgs: [],
-    hairImgs: [],
-    makeupImgs: [],
-    nailImgs: [],
+    hairCount: 0,
+    makeupCount: 0,
+    nailCount: 0,
     isHidden:'none',
     informations: [],
     collection: []
@@ -30,14 +30,29 @@ Page({
     dbutils.getData.getDataFromId('userInfo').then(res => {
       console.log(res.data)
       for(let i=0; i<res.data.users.length; i++){
-        if(res.data.users[i].username === 'John') {
+        if(res.data.users[i].username === 'Amy') {
           let tempCollection = res.data.users[i].collections
           this.setData({
             collection: tempCollection
           }) 
+          for(let j = 0; j<res.data.users[i].collections.length; j++) {
+            if(res.data.users[i].collections[j].class === 'hair') {
+              this.data.hairCount ++
+            } else if(res.data.users[i].collections[j].class === 'makeup') {
+              this.data.makeupCount ++
+            } else if(res.data.users[i].collections[j].class === 'nail') {
+              this.data.nailCount ++
+            }
+          }
         }
       }
-      console.log(this.data.collection)
+      this.setData({
+        hairCount: this.data.hairCount,
+        makeupCount: this.data.makeupCount,
+        nailCount: this.data.nailCount
+      })
+      console.log(this.data.hairCount)
+      // console.log(this.data.collection)
     })
     dbutils.getData.getDataFromId('collect').then(res => {
       // console.log(res.data.hairImgs)
@@ -46,6 +61,10 @@ Page({
         hairImgs: res.data.hairImgs
       })
     })
+    this.setData({
+      allImgs: this.data.hairImgs + this.data.makeupImgs + this.data.nailImgs
+    })
+    console.log(this.data.hairImgs)
   },
 
   allClick() {
