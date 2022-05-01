@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="main">
-{{name}}
   <Head tabButton="{{tabButton}}" num="{{num}}" hairImgs="{{hairImgs}}" makeupImgs="{{makeupImgs}}" nailImgs="{{nailImgs}}" inputvalue="{{inputvalue}}"></Head>
 </view>
+<button bindtap="createInfo">新增信息</button>
 <ScrollTop style="display:{{isHidden}}"></ScrollTop>

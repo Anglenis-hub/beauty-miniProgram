@@ -2,6 +2,7 @@
 // 获取应用实例
 const app = getApp()
 const dbutils = require('../../utils/database_driver')
+let arr = []
 
 Page({
   data: {
@@ -37,6 +38,9 @@ Page({
     wx.navigateTo({
       url: '../collect/collect'
     })
+  },
+  createInfo() {
+    dbutils.insert('information', 'informations.nail', arr)
   },
   onLoad() {
     if (wx.getUserProfile) {

@@ -5,27 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    informations: [],
+    informations: {},
     loveSrc: "../../static/image/love.png",
     loveImg: "../../static/image/love.png",
-    clickPassIndex: -1
+    clickPassIndex: -1,
+    clickPassType: ''
   },
-
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
     let clickPassIndex = wx.getStorageSync('clickPassIndex')
+    let clickPassType = wx.getStorageSync('clickPassType')
     this.setData({
-      clickPassIndex: clickPassIndex
+      clickPassIndex: clickPassIndex,
+      clickPassType: clickPassType
     })
+    // console.log(clickPassIndex, clickPassType)
     dbutils.getData.getDataFromId('information').then(res => {
-      console.log(res.data.informations)
+    console.log(clickPassIndex, clickPassType)
+    console.log(res.data.informations)
+      let temp = this.data.informations
+      temp.hair = res.data.informations.hair
+      temp.makeup = res.data.informations[clickPassType]
+      temp.nail = res.data.informations.nail
       this.setData({
-        informations: res.data.informations
+        informations: temp
       })
     }) 
+    console.log('informations', this.data.informations)
   }, 
   loveClick() {
     wx.cloud.init({

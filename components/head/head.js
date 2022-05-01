@@ -33,7 +33,8 @@ Component({
   },
   data: {
     clearShow: false,
-    clickPassIndex: -1
+    clickPassIndex: -1,
+    clickPassType: ''
   },
   /**
    * 组件的方法列表
@@ -63,10 +64,12 @@ Component({
         num: "nail"
       })
     },
-    hairImgClick: function(e) {
-      console.log('e.currentTarget.dataset',e.currentTarget.dataset.index)
+    imgClick: function(e) {
+      console.log('e.currentTarget.dataset',e.currentTarget.dataset)
       let clickPassIndex = e.currentTarget.dataset.index
+      let clickPassType = e.currentTarget.dataset.type
       wx.setStorageSync('clickPassIndex', clickPassIndex)
+      wx.setStorageSync('clickPassType', clickPassType)
       // console.log('clickPassIndex:',clickPassIndex)
       wx.navigateTo({
         url: '../../pages/information/information',
