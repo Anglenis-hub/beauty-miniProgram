@@ -1,6 +1,5 @@
 .main {
   margin: 0;
-  height: 100vh;
 }
 .head {
   position: fixed;
@@ -69,27 +68,26 @@
   color: white;
 }
 .recommanded {
-  margin: 17vmax 2vmax;
+  /* height: 100vh; */
+  column-count: 2;
+  column-width: 45vw;
+  column-gap: 2vw;
+  margin: 210rpx 2vmax;
 }
 .recommanded-text {
   font-size: 35rpx;
 }
 .image-box {
-  display: block;
-  margin-top: 20rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  break-inside: avoid;
+  background: #fff;
 }
 .img {
   width: 46vw;
+  border-radius: 10rpx;
   margin-bottom: 15rpx;
+  vertical-align: middle;
 }
 
-page {
-  height: 2000rpx;
-}
 .inner {
   width: 160rpx;
   height: 160rpx;
