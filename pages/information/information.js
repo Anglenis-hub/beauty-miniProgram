@@ -24,15 +24,14 @@ Page({
       clickPassType: clickPassType
     })
     dbutils.getData.getDataFromId('information').then(res => {
-      let webDdata = this.data.informations
-      webDdata.hair = res.data.informations.hair
-      webDdata.makeup = res.data.informations[clickPassType]
-      webDdata.nail = res.data.informations.nail
       this.setData({
-        informations: webDdata,
-        heartIconIsLoved: webDdata[clickPassType][clickPassIndex].love
+        informations: res.data.informations,
+        heartIconIsLoved: res.data.informations[clickPassType][clickPassIndex].love
       })
     })
+
+    // dbutils.signIn("user001", 123)
+    // console.log(dbutils.checkifUserExists('hi1'))
   },
   loveClick: function (e) {
     let index = this.data.clickPassIndex
