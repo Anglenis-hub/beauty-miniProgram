@@ -24,13 +24,13 @@ Page({
       clickPassType: clickPassType
     })
     dbutils.getData.getDataFromId('information').then(res => {
-      let webDdata = this.data.informations
-      webDdata.hair = res.data.informations.hair
-      webDdata.makeup = res.data.informations[clickPassType]
-      webDdata.nail = res.data.informations.nail
+      let webData = this.data.informations
+      webData.hair = res.data.informations.hair
+      webData.makeup = res.data.informations[clickPassType]
+      webData.nail = res.data.informations.nail
       this.setData({
-        informations: webDdata,
-        heartIconIsLoved: webDdata[clickPassType][clickPassIndex].love
+        informations: webData,
+        heartIconIsLoved: webData[clickPassType][clickPassIndex].love
       })
     })
   },
