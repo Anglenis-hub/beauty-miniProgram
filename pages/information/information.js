@@ -30,47 +30,48 @@ Page({
       this.setData({
         informations: temp
       })
-    }) 
-  }, 
-  loveClick: function(e) {
-    let clickPassIndex = this.data.clickPassIndex
-    let clickPassType = this.data.clickPassType
-    if(this.data.informations[clickPassType][clickPassIndex].love === false) {
-      dbutils.getData.getDataFromId('userInfo').then(res => {
-        let temp = res.data.users
-        let inserData = { class: clickPassType, itemId: clickPassIndex, isDeleted: false }
-        for(let i = 0; i<temp.length; i++) {
-          if(temp[i].username === 'userA') {
-            this.setData({
-              index: i
-            })
+    })
+  },
+  loveClick: function (e) {
+    let index = this.data.clickPassIndex
+    let type = this.data.clickPassType
+    let informations = this.data.informations
+    let loved = informations[type][index].love
+
+    // 更新用户数据库
+    dbutils.getData.getDataFromId('userInfo').then(res => {
+      let usersInfo = res.data.users
+      let inserData = {
+        class: type,
+        itemId: index,
+        isDeleted: !loved
+      }
+      for (let i = 0; i < usersInfo.length; i++) {
+        if (usersInfo[i].username === 'userA') {
+          this.setData({
+            index: i
+          })
+        }
+      }
+      if (loved) {
+        for (let j = 0; j < usersInfo[index].collections.length; j++) {
+          if (usersInfo[index].collections[j].itemId === index && usersInfo[index].collections[j].class === type) {
+            usersInfo[index].collections.splice(j, 1);
           }
         }
-        dbutils.insert('userInfo', `users.${this.data.index}.collections`, inserData) //将此图片及其信息插入userInfo表中对应用户的collections对象中
-      }) 
-      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, true)//将爱心状态改为收藏实心
-    } else {
-      dbutils.getData.getDataFromId('userInfo').then(res => {
-        let temp = res.data.users
-        console.log('temp', temp)
-        for(let i = 0; i<temp.length; i++) {
-          if(temp[i].username === 'userA') {
-            this.setData({
-              index: i
-            })
-          }
-        }
-        for (let j = 0; j < temp[this.data.index].collections.length; j++) {
-          if (temp[this.data.index].collections[j].itemId === clickPassIndex && temp[this.data.index].collections[j].class === clickPassType) {
-            temp[this.data.index].collections.splice(j, 1);
-          }
-        }  
-        dbutils.update('userInfo', `users.${this.data.index}.collections`, temp[this.data.index].collections)//取消收藏：将此图片及其信息在userInfo表中对应用户的collections对象中删除
-      }) 
-      dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, false)//将爱心状态改为空心
-    }
-    wx.redirectTo({
-      url: '../information/information',
+        dbutils.update('userInfo', `users.${index}.collections`, usersInfo[index].collections) //取消收藏：将此图片及其信息在userInfo表中对应用户的collections对象中删除
+      } else {
+        dbutils.insert('userInfo', `users.${index}.collections`, inserData) //将此图片及其信息插入userInfo表中对应用户的collections对象中
+      }
+    })
+
+    // 更新information数据库
+    dbutils.update('information', `informations.${type}.${index}.love`, !loved)
+
+    // 反转按钮状态
+    informations[type][index].love = !loved
+    this.setData({
+      informations: informations
     })
   },
   orderClick() {
