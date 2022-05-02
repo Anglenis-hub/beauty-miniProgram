@@ -7,6 +7,7 @@ Page({
   data: {
     index: 0,
     informations: {},
+    heartIconIsLoved: false,
     loveSrc: "../../static/image/love.png",
     loveImg: "../../static/image/love.png",
     clickPassIndex: -1,
@@ -23,20 +24,16 @@ Page({
       clickPassType: clickPassType
     })
     dbutils.getData.getDataFromId('information').then(res => {
-      let temp = this.data.informations
-      temp.hair = res.data.informations.hair
-      temp.makeup = res.data.informations[clickPassType]
-      temp.nail = res.data.informations.nail
       this.setData({
-        informations: temp
+        informations: res.data.informations,
+        heartIconIsLoved: res.data.informations[clickPassType][clickPassIndex].love
       })
     })
   },
   loveClick: function (e) {
     let index = this.data.clickPassIndex
     let type = this.data.clickPassType
-    let informations = this.data.informations
-    let loved = informations[type][index].love
+    let loved = this.data.heartIconIsLoved
 
     // 更新用户数据库
     dbutils.getData.getDataFromId('userInfo').then(res => {
@@ -54,9 +51,9 @@ Page({
         }
       }
       if (loved) {
-        for (let j = 0; j < usersInfo[index].collections.length; j++) {
-          if (usersInfo[index].collections[j].itemId === index && usersInfo[index].collections[j].class === type) {
-            usersInfo[index].collections.splice(j, 1);
+        for (let i = 0; i < usersInfo[index].collections.length; i++) {
+          if (usersInfo[index].collections[i].itemId === index && usersInfo[index].collections[i].class === type) {
+            usersInfo[index].collections.splice(i, 1);
           }
         }
         dbutils.update('userInfo', `users.${index}.collections`, usersInfo[index].collections) //取消收藏：将此图片及其信息在userInfo表中对应用户的collections对象中删除
@@ -69,9 +66,8 @@ Page({
     dbutils.update('information', `informations.${type}.${index}.love`, !loved)
 
     // 反转按钮状态
-    informations[type][index].love = !loved
     this.setData({
-      informations: informations
+      heartIconIsLoved: !loved
     })
   },
   orderClick() {
