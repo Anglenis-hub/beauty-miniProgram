@@ -59,7 +59,7 @@ Page({
     let passCollectType = e.currentTarget.dataset.type
     wx.setStorageSync('passCollectIndex', passCollectIndex)
     wx.setStorageSync('passCollectType', passCollectType)
-    console.log('passCollectIndex:',passCollectIndex,'passCollectType:',passCollectType)
+    // console.log('passCollectIndex:',passCollectIndex,'passCollectType:',passCollectType)
     wx.navigateTo({
       url: '../../pages/collectInformation/collectInformation',
       success:()=>{

@@ -22,7 +22,6 @@ Page({
       clickPassIndex: clickPassIndex,
       clickPassType: clickPassType
     })
-    // console.log(clickPassIndex, clickPassType)
     dbutils.getData.getDataFromId('information').then(res => {
       let temp = this.data.informations
       temp.hair = res.data.informations.hair
@@ -32,12 +31,10 @@ Page({
         informations: temp
       })
     }) 
-    // console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
   }, 
   loveClick: function(e) {
     let clickPassIndex = this.data.clickPassIndex
     let clickPassType = this.data.clickPassType
-    console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
     if(this.data.informations[clickPassType][clickPassIndex].love === false) {
       dbutils.getData.getDataFromId('userInfo').then(res => {
         let temp = res.data.users
@@ -54,7 +51,6 @@ Page({
       dbutils.update('information', `informations.${clickPassType}.${clickPassIndex}.love`, true)//将爱心状态改为收藏实心
     } else {
       dbutils.getData.getDataFromId('userInfo').then(res => {
-        console.log('clickPassIndex:',clickPassIndex, 'clickPassType:', clickPassType)
         let temp = res.data.users
         console.log('temp', temp)
         for(let i = 0; i<temp.length; i++) {
@@ -65,7 +61,7 @@ Page({
           }
         }
         for (let j = 0; j < temp[this.data.index].collections.length; j++) {
-          if (temp[this.data.index].collections[j].itemId === clickPassIndex) {
+          if (temp[this.data.index].collections[j].itemId === clickPassIndex && temp[this.data.index].collections[j].class === clickPassType) {
             temp[this.data.index].collections.splice(j, 1);
           }
         }  
@@ -82,66 +78,4 @@ Page({
       url: '../order/order',
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  observers:{
-    'loveImg': function(e) {
-      console.log(e)
-      // if(e) {
-      //   this.setData ({
-      //     clearShow: true
-      //   })
-      // } else {
-      //   this.setData ({
-      //     clearShow: false
-      //   })
-      // }
-    }
-  }
 })
