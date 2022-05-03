@@ -3,6 +3,7 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 
 Page({
   data: {
+    error: '',
     avatarUrl: defaultAvatarUrl,
   },
   onChooseAvatar(e) {
@@ -11,7 +12,9 @@ Page({
       avatarUrl,
     })
   },
-
+  userInfoForm(e) {
+    console.log(e);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,7 +33,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      error: '这是一个错误提示'
+  })
   },
 
   /**

@@ -45,10 +45,11 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.19.4",
+  "libVersion": "2.24.0",
   "appid": "wx49db3ec538de8665",
   "projectname": "miniprogram-1",
   "cloudfunctionRoot": "cloudfunctions/",
