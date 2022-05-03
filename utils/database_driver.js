@@ -5,6 +5,9 @@ const db = wx.cloud.database()
 const _ = db.command
 //获取数据库数据
 export const getData = {
+  fromId(id) {
+    return db.collection(tableName).doc(id).get()
+  },
   //通过id获得表信息
   getDataFromId(id) {
     return db.collection(tableName).doc(id).get()
@@ -15,47 +18,18 @@ export const getData = {
   }
 }
 
-export const userIsSignedUp = (openid) => {
-  console.log("userIsSignedUp openid:", openid)
-  return false
-}
-
-export const getUserInfo = () => {
-  console.log(wx.cloud.getWXContext())
-}
-
-const getHash = (str) => {
-  let h1 = 0xdeadbeef ^ 0,
-    h2 = 0x41c6ce57 ^ 0;
-  for (let i = 0, ch; i < str.length; i++) {
-    ch = str.charCodeAt(i);
-    h1 = Math.imul(h1 ^ ch, 2654435761);
-    h2 = Math.imul(h2 ^ ch, 1597334677);
-  }
-  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
-  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
-  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
+export const userIsExists = (openid) => {
+  return db.collection(userTable).doc(openid).get()
 }
 
 //注册用户
-export const signIn = (name, pwd, phoneNum) => {
-  let hash = getHash(name)
-  db.collection(userTable).add({
+export const signUp = (name, avatarUrl, openid) => {
+  return db.collection(userTable).add({
     data: {
-      _id: hash,
+      _id: openid,
       username: name,
-      password: pwd,
-      phoneNumber: phoneNum,
+      avatarUrl: avatarUrl,
       collections: {}
-    },
-    sucess: function (res) {
-      console.log(res.data)
-    },
-    // 如果用户名已存在，提示错误信息
-    fail: function (res) {
-      if (res.errMsg === '[FailedOperation.DuplicateWrite] multiple write,duplicate key error collection') {
-        console.log("username already exists")
-      }
     }
   })
 }

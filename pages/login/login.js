@@ -1,5 +1,31 @@
 // pages/self/self.js
 const dbutils = require('../../utils/database_driver')
+
+const login = () => {
+  // 更新session_key
+  wx.getUserInfo({
+    success: (res) => {
+      let sessionKey = res.signature
+      wx.setStorage({
+        key: 'session_key',
+        data: sessionKey
+      })
+    }
+  })
+  // 跳转到主页
+  wx.switchTab({
+    url: '../index/index'
+  })
+}
+
+const checkSession = async () => {
+  let sessionKey = await (await wx.getUserInfo()).signature
+  if (sessionKey != wx.getStorageSync('session_key')) {
+    console.log("user session has expired or not exsits")
+    throw new Error('session has expired')
+  }
+}
+
 Page({
 
   /**
@@ -8,45 +34,44 @@ Page({
   data: {
 
   },
-  login(e) {
-    wx.redirectTo({
-      url: '../signup/signup',
+  onClickSignup(e) {
+    // 提示用户授权获取昵称和头像url
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 获取信息的目的，必须要填写才能成功从微信获取
+      success: (res) => {
+        let avatarUrl = res.userInfo.avatarUrl
+        let userName = res.userInfo.nickName
+        let openid = wx.getStorageSync('openid')
+        // 注册用户
+        dbutils.signUp(userName, avatarUrl, openid).then(res2 => {
+          // 注册成功后，login
+          console.log("user login with signed up")
+          login()
+        }).catch(err => {
+          // 注册失败
+          if (err.errMsg === '[FailedOperation.DuplicateWrite] multiple write,duplicate key error collection') {
+            // 如果用户已存在，login
+            console.log("user login with existing info")
+            login()
+          } else {
+            // 其他错误
+            console.error(err)
+          }
+        })
+      }
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 用getUserInfo方法来获取当前用户的signature，用来检查是否已经登陆（当作session_key来使用）
-    wx.getUserInfo({
-      success: (res) => {
-        let sessionKey = res.signature
-        if (sessionKey === wx.getStorageSync('session_key')) {
-          // 如果session未过期
-        } else {
-          // 如果session已过期，或不存在（首次登陆）
-          // 调用云函数获得openid来判断用户是否存在于数据库（aka 用户是否注册）
-          wx.cloud.callFunction({
-            name: 'getWXContext',
-            success: function (res) {
-              let openid = res.result.openid
-              if (dbutils.userIsSignedUp(openid)) {
-                // 如果注册，更新session_key并转向主页
-                console.log('session key:', sessionKey)
-                wx.setStorage({
-                  key: 'session_key',
-                  data: session_key
-                })
-                wx.switchTab({
-                  url: '../index/index'
-                })
-              } else {
-                // 如果未注册，等待用户点击一键登录并注册，然后转向注册页面
-              }
-            },
-            fail: console.error
-          })
-        }
+    checkSession().then(res => {
+      // 如果session未过期，login
+      console.log("user login with session")
+      login()
+    }).catch(err => {
+      if (err.message != 'session has expired') {
+        console.error(err)
       }
     })
   },

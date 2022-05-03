@@ -7,8 +7,7 @@
     "pages/information/information",
     "pages/order/order",
     "pages/orderResult/orderResult",
-    "pages/collectInformation/collectInformation",
-    "pages/signup/signup"
+    "pages/collectInformation/collectInformation"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -8,6 +8,18 @@ App({
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    // 保存用户openid
+    wx.cloud.callFunction({
+      name: 'getWXContext',
+      success: function (res) {
+        wx.setStorage({
+          key: 'openid',
+          data: res.result.openid
+        })
+      },
+      fail: console.error
+    })
   },
   globalData: {
     userInfo: null
