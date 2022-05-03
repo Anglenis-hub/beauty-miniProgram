@@ -1,6 +1,3 @@
-wx.cloud.init({
-  env: 'cloud1-2ghfekqc5cf347a4'
-})
 const tableName = 'beautyTable'
 const userTable = 'users'
 const itemTable = 'items'
@@ -16,6 +13,15 @@ export const getData = {
   database() {
     return db.collection(tableName)
   }
+}
+
+export const userIsSignedUp = (openid) => {
+  console.log("userIsSignedUp openid:", openid)
+  return false
+}
+
+export const getUserInfo = () => {
+  console.log(wx.cloud.getWXContext())
 }
 
 const getHash = (str) => {
