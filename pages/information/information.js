@@ -6,70 +6,52 @@ Page({
    */
   data: {
     index: 0,
+    imageID: '',
     informations: {},
+    userCollections: [],
     heartIconIsLoved: false,
     loveSrc: "../../static/image/love.png",
     loveImg: "../../static/image/love.png",
-    clickPassIndex: -1,
-    clickPassType: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let clickPassIndex = wx.getStorageSync('clickPassIndex')
-    let clickPassType = wx.getStorageSync('clickPassType')
+    let imageID = wx.getStorageSync('clickPassImageID')
     this.setData({
-      clickPassIndex: clickPassIndex,
-      clickPassType: clickPassType
+      imageID: imageID
     })
-    dbutils.getData.getDataFromId('information').then(res => {
+    dbutils.users.getCollections().then(_res => {
+      let userCollections = _res.data.collections
       this.setData({
-        informations: res.data.informations,
-        heartIconIsLoved: res.data.informations[clickPassType][clickPassIndex].love
+        userCollections: userCollections
+      })
+      dbutils.items.getDataByID(imageID).then(res => {
+        this.setData({
+          informations: res.data,
+          heartIconIsLoved: userCollections.includes(imageID)
+        })
       })
     })
-
-    // dbutils.signIn("user001", 123)
-    // console.log(dbutils.checkifUserExists('hi1'))
   },
+
   loveClick: function (e) {
-    let index = this.data.clickPassIndex
-    let type = this.data.clickPassType
+    let userCollections = this.data.userCollections
     let loved = this.data.heartIconIsLoved
+    let imageID = this.data.imageID
+    
+    if(loved) {
+      // 如果已收藏，移除这个id
+      userCollections = userCollections.filter(item => item !== imageID)
+    } else {
+      // 否则添加id进入用户收藏数组
+      userCollections.push(imageID)
+    }
+    dbutils.users.updateCollections(userCollections)
 
-    // 更新用户数据库
-    dbutils.getData.getDataFromId('userInfo').then(res => {
-      let usersInfo = res.data.users
-      let inserData = {
-        class: type,
-        itemId: index,
-        isDeleted: !loved
-      }
-      for (let i = 0; i < usersInfo.length; i++) {
-        if (usersInfo[i].username === 'userA') {
-          this.setData({
-            index: i
-          })
-        }
-      }
-      if (loved) {
-        for (let i = 0; i < usersInfo[index].collections.length; i++) {
-          if (usersInfo[index].collections[i].itemId === index && usersInfo[index].collections[i].class === type) {
-            usersInfo[index].collections.splice(i, 1);
-          }
-        }
-        dbutils.update('userInfo', `users.${index}.collections`, usersInfo[index].collections) //取消收藏：将此图片及其信息在userInfo表中对应用户的collections对象中删除
-      } else {
-        dbutils.insert('userInfo', `users.${index}.collections`, inserData) //将此图片及其信息插入userInfo表中对应用户的collections对象中
-      }
-    })
-
-    // 更新information数据库
-    dbutils.update('information', `informations.${type}.${index}.love`, !loved)
-
-    // 反转按钮状态
+    // 反转按钮状态，并更新页面缓存的收藏数组
     this.setData({
+      userCollections: userCollections,
       heartIconIsLoved: !loved
     })
   },

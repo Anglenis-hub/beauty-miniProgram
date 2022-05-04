@@ -41,9 +41,8 @@ Page({
       success: (res) => {
         let avatarUrl = res.userInfo.avatarUrl
         let userName = res.userInfo.nickName
-        let openid = wx.getStorageSync('openid')
         // 注册用户
-        dbutils.signUp(userName, avatarUrl, openid).then(res2 => {
+        dbutils.users.signUp(userName, avatarUrl).then(res2 => {
           // 注册成功后，login
           console.log("user login with signed up")
           login()
