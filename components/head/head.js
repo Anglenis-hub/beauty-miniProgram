@@ -6,7 +6,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    tabButton:{
+    tabButton: {
       type: Object,
       value: {}
     },
@@ -32,16 +32,14 @@ Component({
     }
   },
   data: {
-    clearShow: false,
-    clickPassIndex: -1,
-    clickPassType: ''
+    clearShow: false
   },
   /**
    * 组件的方法列表
    */
   methods: {
     hairClick() {
-      if(this.data.num !== 'hair') {
+      if (this.data.num !== 'hair') {
         utils.scrollTop()
       }
       this.setData({
@@ -49,7 +47,7 @@ Component({
       })
     },
     makeupClick() {
-      if(this.data.num !== 'makeup') {
+      if (this.data.num !== 'makeup') {
         utils.scrollTop()
       }
       this.setData({
@@ -57,30 +55,27 @@ Component({
       })
     },
     nailClick() {
-      if(this.data.num !== 'nail') {
+      if (this.data.num !== 'nail') {
         utils.scrollTop()
       }
       this.setData({
         num: "nail"
       })
     },
-    imgClick: function(e) {
-      // console.log('e.currentTarget.dataset',e.currentTarget.dataset)
-      let clickPassIndex = e.currentTarget.dataset.index
-      let clickPassType = e.currentTarget.dataset.type
-      wx.setStorageSync('clickPassIndex', clickPassIndex)
-      wx.setStorageSync('clickPassType', clickPassType)
-      // console.log('clickPassIndex:',clickPassIndex)
+    imgClick: function (e) {
+      // console.log('e.currentTarget.dataset', e.currentTarget.dataset)
+      let clickPassImageID = e.currentTarget.dataset.id
+      wx.setStorageSync('clickPassImageID', clickPassImageID)
       wx.navigateTo({
         url: '../../pages/information/information',
-        success:()=>{
+        success: () => {
           wx.setNavigationBarTitle({
             title: '详细信息'
           })
         }
       })
     },
-    bindInputData: function(e){
+    bindInputData: function (e) {
       this.setData({
         inputvalue: e.detail.value
       });
@@ -91,15 +86,15 @@ Component({
       });
     }
   },
-  observers:{
-    'inputvalue': function(e) {
+  observers: {
+    'inputvalue': function (e) {
       // console.log(e)
-      if(e) {
-        this.setData ({
+      if (e) {
+        this.setData({
           clearShow: true
         })
       } else {
-        this.setData ({
+        this.setData({
           clearShow: false
         })
       }
