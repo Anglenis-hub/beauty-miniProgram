@@ -1,9 +1,11 @@
 <!--collect.wxml-->
-<view class="tabs-box">
-  <view bindtap="allClick" class="tab first-radius font {{num==='all'?'clicked-tab':''}}">{{ tabButton.all }}</view>
-  <view bindtap="hairClick" class="tab font {{num==='hair'?'clicked-tab':''}}">{{ tabButton.hair }}</view>
-  <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
-  <view bindtap="nailClick" class="tab end-radius font {{num==='nail'?'clicked-tab':''}}">{{ tabButton.nail }}</view>
+<view class="head">
+  <view class="tabs-box">
+    <view bindtap="allClick" class="tab first-radius font {{num==='all'?'clicked-tab':''}}">{{ tabButton.all }}</view>
+    <view bindtap="hairClick" class="tab font {{num==='hair'?'clicked-tab':''}}">{{ tabButton.hair }}</view>
+    <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
+    <view bindtap="nailClick" class="tab end-radius font {{num==='nail'?'clicked-tab':''}}">{{ tabButton.nail }}</view>
+  </view>
 </view>
 <view wx:if="{{num === 'all'}}"> 
   <view class="collect-num">{{collection.length}}件</view>

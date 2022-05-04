@@ -29,6 +29,9 @@ Page({
         heartIconIsLoved: res.data.informations[clickPassType][clickPassIndex].love
       })
     })
+
+    // dbutils.signIn("user001", 123)
+    // console.log(dbutils.checkifUserExists('hi1'))
   },
   loveClick: function (e) {
     let index = this.data.clickPassIndex
