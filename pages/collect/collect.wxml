@@ -11,7 +11,7 @@
   <view class="collect-num">{{collection.length}}件</view>
   <view class="collect-image">
     <view wx:for="{{collection}}" wx:for-item="item" wx:key="index" class="image-box">
-      <image src="{{informations[item.class][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick"  data-index="{{item.itemId}}" data-type="{{item.class}}"></image>
+      <!-- <image src="{{informations[item.class][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick"  data-index="{{item.itemId}}" data-type="{{item.class}}"></image> -->
     </view>
   </view>
 </view>
@@ -19,7 +19,7 @@
   <view class="collect-num">{{hairCount}}件</view>
   <view class="collect-image">
     <view wx:for="{{collection}}" wx:for-item="item" wx:key="index" class="image-box">
-      <image wx:if="{{item.class === 'hair'}}" src="{{informations['hair'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='hair'></image>
+      <!-- <image wx:if="{{item.class === 'hair'}}" src="{{informations['hair'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='hair'></image> -->
     </view>
   </view>
 </view>
@@ -27,7 +27,7 @@
   <view class="collect-num">{{makeupCount}}件</view>
   <view class="collect-image">
     <view wx:for="{{collection}}" wx:for-item="item" wx:key="index" class="image-box">
-      <image wx:if="{{item.class === 'makeup'}}" src="{{informations['makeup'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='makeup'></image>
+      <!-- <image wx:if="{{item.class === 'makeup'}}" src="{{informations['makeup'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='makeup'></image> -->
     </view>
   </view>
 </view>
@@ -35,7 +35,7 @@
   <view class="collect-num">{{nailCount}}件</view>
   <view class="collect-image">
     <view wx:for="{{collection}}" wx:for-item="item" wx:key="index" class="image-box">
-      <image wx:if="{{item.class === 'nail'}}" src="{{informations['nail'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='nail'></image>
+      <!-- <image wx:if="{{item.class === 'nail'}}" src="{{informations['nail'][item.itemId].ImgSrc}}" mode='widthFix' class="img" bindtap="imgClick" data-index="{{item.itemId}}" data-type='nail'></image> -->
     </view>
   </view>
 </view>
