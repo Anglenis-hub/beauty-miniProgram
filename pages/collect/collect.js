@@ -1,5 +1,5 @@
 // collect.js
-const util = require('../../utils/util.js')
+const utils = require('../../utils/util.js')
 const dbutils = require('../../utils/database_driver')
 
 Page({
@@ -70,21 +70,33 @@ Page({
     })
   },
   allClick() {
+    if(this.data.num !== 'all') {
+      utils.scrollTop()
+    }
     this.setData({
       num: "all"
     })
   },
   hairClick() {
+    if(this.data.num !== 'hair') {
+      utils.scrollTop()
+    }
     this.setData({
       num: "hair"
     })
   },
   makeupClick() {
+    if(this.data.num !== 'makeup') {
+      utils.scrollTop()
+    }
     this.setData({
       num: "makeup"
     })
   },
   nailClick() {
+    if(this.data.num !== 'nail') {
+      utils.scrollTop()
+    }
     this.setData({
       num: "nail"
     })

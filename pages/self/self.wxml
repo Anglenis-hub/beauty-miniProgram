@@ -1,7 +1,11 @@
 <!--pages/self/self.wxml-->
 <view class="main"> 
   <view class="head">
-    <button bindtap="sign">点击用户注册</button>
+    <!-- <button wx:if="{{sessionIsExpired === true}}" bindtap="onClickSignup" class="login-btn"> 一键登录 </button> -->
+    <view class="user">
+      <image src="{{avatarUrl}}" class="avatar-image"></image>
+      <view class="user-name" bindtap="onClickSignup">{{userName}}</view>
+    </view>
   </view>
   <view class="my-things">
     <view class="my-thing">

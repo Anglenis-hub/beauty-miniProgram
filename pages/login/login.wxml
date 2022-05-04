@@ -1,2 +1,0 @@
-<!--pages/login/login.wxml-->
-<button bindtap="onClickSignup"> 一键登录 </button>

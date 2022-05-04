@@ -4,12 +4,10 @@
 .head {
   position: fixed;
   top: 0rpx;
-  /* left: 5vw; */
   width: 100vw;
   height: 210rpx;
   margin: 0 auto;
   background-color: #fff;
-  /* bottom: 40rpx; */
 }
 .search-box {
   position: relative;

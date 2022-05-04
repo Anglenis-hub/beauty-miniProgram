@@ -1,3 +1,11 @@
+.head {
+  position: fixed;
+  top: 0rpx;
+  width: 100vw;
+  height: 150rpx;
+  margin: 0 auto;
+  background-color: #fff;
+}
 .tabs-box {
   width: 90vw;
   margin: 40rpx auto;
@@ -33,7 +41,7 @@
   width: 90vw;
   background-color: rgb(114, 114, 114, 0.2);
   border-radius: 10rpx;
-  margin: 25rpx auto;
+  margin: 150rpx auto 25rpx;
   padding: 10rpx 0rpx 10rpx 20rpx;
   line-height: 40rpx;
 }
