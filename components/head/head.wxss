@@ -35,25 +35,26 @@
   left: 90%;
 }
 .tabs-box {
-  width: 89vw;
+  width: 93vw;
   display: flex;
   flex-direction: row;
   margin: 40rpx auto;
 }
 .tab {
   border: 2rpx solid white;
+  border-radius: 20rpx;
   background-color: rgb(114, 114, 114, 0.2);
-  width: 33vw;
+  width: 31vw;
   height: 65rpx;
 }
-.first-radius {
+/* .first-radius {
   border-radius: 15rpx 0 0 15rpx;
   border-right: none;
 }
 .end-radius {
   border-radius: 0 15rpx 15rpx 0;
   border-left: none;
-}
+} */
 .font {
   text-align: center;
   line-height: 65rpx;

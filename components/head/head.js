@@ -47,30 +47,11 @@ Component({
    */
   methods: {
     tapClick(e) {
-      console.log(e)
-    },
-    hairClick(e) {
-      if (this.data.num !== 'hair') {
+      if (this.data.num !== e.currentTarget.id) {
         utils.scrollTop()
       }
       this.setData({
-        num: "hair"
-      })
-    },
-    makeupClick() {
-      if (this.data.num !== 'makeup') {
-        utils.scrollTop()
-      }
-      this.setData({
-        num: "makeup"
-      })
-    },
-    nailClick() {
-      if (this.data.num !== 'nail') {
-        utils.scrollTop()
-      }
-      this.setData({
-        num: "nail"
+        num: e.currentTarget.id
       })
     },
     imgClick: function (e) {

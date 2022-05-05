@@ -8,12 +8,9 @@
     </view>
   </view>
   <view class="tabs-box">
-    <ul>
-      <view class="tab" wx:for="{{tabButton}}" wx:for-item="item" wx:key="index">
-        <li bindtap="tapClick" class="tab font {{num===index?'clicked-tab':''}}" id="hello">{{ item }}
-        </li>
+      <view class="tab font {{num===index?'clicked-tab':''}}" wx:for="{{tabButton}}" wx:for-item="item" wx:key="index">
+        <view bindtap="tapClick" id="{{index}}">{{ item }}</view>
       </view>
-    </ul>
     <!-- <view bindtap="hairClick" class="tab first-radius font {{num==='hair'?'clicked-tab':''}}" id="hello">{{ tabButton.hair }}
     </view>
     <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
