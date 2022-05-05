@@ -54,6 +54,11 @@ Page({
       }
     })
   },
+  myAppointment() {
+    wx.navigateTo({
+      url: '../myAppointment/myAppointment',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

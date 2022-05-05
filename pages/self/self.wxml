@@ -11,7 +11,7 @@
       <text>我的信息</text>
       <text>></text>
     </view>
-    <view class="my-thing">
+    <view class="my-thing" bindtap="myAppointment">
       <text>我的预约</text>
       <text>></text>
     </view>
