@@ -64,7 +64,7 @@ Component({
     },
     imgClick: function (e) {
       // console.log('e.currentTarget.dataset', e.currentTarget.dataset)
-      let clickPassImageID = e.currentTarget.dataset.id
+      const clickPassImageID = e.currentTarget.dataset.id
       wx.setStorageSync('clickPassImageID', clickPassImageID)
       wx.navigateTo({
         url: '../../pages/information/information',

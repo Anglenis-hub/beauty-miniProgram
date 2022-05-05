@@ -36,9 +36,9 @@ Page({
   },
 
   loveClick: function (e) {
+    const loved = this.data.heartIconIsLoved
+    const imageID = this.data.imageID
     let userCollections = this.data.userCollections
-    let loved = this.data.heartIconIsLoved
-    let imageID = this.data.imageID
     
     if(loved) {
       // 如果已收藏，移除这个id
