@@ -29,10 +29,14 @@ Component({
     inputvalue: {
       type: String,
       value: ''
+    },
+    collectNumInfo: {
+      type: String,
+      value: ''
     }
   },
   data: {
-    clearShow: false
+    clearShow: false,
   },
   /**
    * 组件的方法列表
@@ -83,8 +87,17 @@ Component({
         })
       }
     },
-    'num': function (e) {
-      // console.log(e)
+    'imgCounts, num': function (imgCounts, num) {
+      const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+      if (sessionIsExpired) {
+        this.setData({
+          collectNumInfo: '请登录后查看'
+        })
+      } else {
+        this.setData({
+          collectNumInfo: imgCounts[num] + '件'
+        })
+      }
     }
   }
 })
