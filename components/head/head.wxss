@@ -38,7 +38,7 @@
   width: 93vw;
   display: flex;
   flex-direction: row;
-  margin: 40rpx auto;
+  margin: 20rpx auto;
 }
 .tab {
   border: 8rpx solid white;
@@ -47,14 +47,6 @@
   width: 31vw;
   height: 65rpx;
 }
-/* .first-radius {
-  border-radius: 15rpx 0 0 15rpx;
-  border-right: none;
-}
-.end-radius {
-  border-radius: 0 15rpx 15rpx 0;
-  border-left: none;
-} */
 .font {
   text-align: center;
   line-height: 65rpx;
@@ -70,7 +62,7 @@
   width: 90vw;
   background-color: rgb(114, 114, 114, 0.2);
   border-radius: 10rpx;
-  margin: 150rpx auto 25rpx;
+  margin: 20rpx auto;
   padding: 10rpx 0rpx 10rpx 20rpx;
   line-height: 40rpx;
 }

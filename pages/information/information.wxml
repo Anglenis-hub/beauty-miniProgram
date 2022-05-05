@@ -26,4 +26,3 @@
   </view>
   <button style="width: 90vw;" class="order-btn" bindtap="orderClick">预约</button>
 </view>
-<button bindtap='test'>test</button>
