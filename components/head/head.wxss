@@ -65,13 +65,13 @@
   /* background-color: rgb(68, 68, 68); */
   color: white;
 }
-.recommanded {
+.recommended {
   column-count: 2;
   column-width: 45vw;
   column-gap: 2vw;
   margin: 210rpx 2vmax;
 }
-.recommanded-text {
+.recommended-text {
   font-size: 35rpx;
 }
 .image-box {

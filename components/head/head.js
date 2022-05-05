@@ -10,6 +10,14 @@ Component({
       type: Object,
       value: {}
     },
+    page: {
+      type: String,
+      value: ''
+    },
+    types : {
+      type: Array,
+      value: []
+    },
     num: {
       type: String,
       value: ''
@@ -38,7 +46,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    hairClick() {
+    tapClick(e) {
+      console.log(e)
+    },
+    hairClick(e) {
       if (this.data.num !== 'hair') {
         utils.scrollTop()
       }
@@ -100,7 +111,7 @@ Component({
       }
     },
     'num': function (e) {
-      // console.log(e)
+      console.log(e)
     }
   }
 })
