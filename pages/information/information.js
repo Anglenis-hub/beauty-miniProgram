@@ -17,30 +17,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    let imageID = wx.getStorageSync('clickPassImageID')
-    this.setData({
-      imageID: imageID
-    })
-    dbutils.users.getCollections().then(_res => {
-      let userCollections = _res.data.collections
+    const imageID = wx.getStorageSync('clickPassImageID')
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+
+    // 无论用户是否登录，都正确显示图片信息
+    dbutils.items.getDataByID(imageID).then(res => {
       this.setData({
-        userCollections: userCollections
+        imageID: imageID,
+        informations: res.data
       })
-      dbutils.items.getDataByID(imageID).then(res => {
+    })
+
+    // 如果用户登录
+    if (!sessionIsExpired) {
+      dbutils.users.getCollections().then(_res => {
+        const userCollections = _res.data.collections
         this.setData({
-          informations: res.data,
+          userCollections: userCollections,
           heartIconIsLoved: userCollections.includes(imageID)
         })
       })
-    })
+    }
   },
 
   loveClick: function (e) {
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    if (sessionIsExpired) {
+      console.log('user did not login')
+      return
+    }
+
     const loved = this.data.heartIconIsLoved
     const imageID = this.data.imageID
     let userCollections = this.data.userCollections
-    
-    if(loved) {
+
+    if (loved) {
       // 如果已收藏，移除这个id
       userCollections = userCollections.filter(item => item !== imageID)
     } else {

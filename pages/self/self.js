@@ -7,6 +7,7 @@ const login = (page) => {
     success: (res) => {
       let sessionKey = res.signature
       wx.setStorageSync('session_key', sessionKey)
+      wx.setStorageSync('sessionIsExpired', false)
     }
   })
   page.setData({
@@ -20,7 +21,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    sessionIsExpired: true,
     avatarUrl: defaultAvatarUrl,
     userName: '立即登录'
   },
@@ -60,9 +60,6 @@ Page({
   onLoad: function (options) {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     const thisPage = this
-    this.setData({
-      sessionIsExpired: sessionIsExpired
-    })
 
     // 如果session未过期，login
     if (!sessionIsExpired) {
