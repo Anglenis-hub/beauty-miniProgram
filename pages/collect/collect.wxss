@@ -1,3 +1,6 @@
+.main {
+  margin: 0;
+}
 .head {
   position: fixed;
   top: 0rpx;

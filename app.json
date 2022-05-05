@@ -5,8 +5,7 @@
     "pages/self/self",
     "pages/information/information",
     "pages/order/order",
-    "pages/orderResult/orderResult",
-    "pages/collectInformation/collectInformation"
+    "pages/orderResult/orderResult"
   ],
   "window": {
     "backgroundTextStyle": "light",

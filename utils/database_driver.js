@@ -17,18 +17,6 @@ const getHash = (str) => {
   return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(16);
 }
 
-//获取数据库数据
-export const getData = {
-  //通过id获得表信息
-  getDataFromId(id) {
-    return db.collection(tableName).doc(id).get()
-  },
-  //获取某数据库信息
-  database() {
-    return db.collection(tableName)
-  }
-}
-
 export const users = {
   openid: wx.getStorageSync('openid'),
   getData() {
@@ -64,6 +52,13 @@ export const users = {
 export const items = {
   getDataByID(id) {
     return db.collection(itemTable).doc(id).get()
+  },
+  getDataMatchedIDsAndKeys(ids, ...args) {
+    let keys = {}
+    args.forEach(key => keys[key] = true)
+    return db.collection(itemTable).where({
+      _id: _.in(ids)
+    }).field(keys).get()
   },
   getDataByType(type, key) {
     return db.collection(itemTable).where({

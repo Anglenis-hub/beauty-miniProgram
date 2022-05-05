@@ -41,7 +41,7 @@
   margin: 40rpx auto;
 }
 .tab {
-  border: 2rpx solid white;
+  border: 8rpx solid white;
   border-radius: 20rpx;
   background-color: rgb(114, 114, 114, 0.2);
   width: 31vw;
@@ -65,6 +65,14 @@
   background-color: rgb(219, 139, 159);
   /* background-color: rgb(68, 68, 68); */
   color: white;
+}
+.collect-num {
+  width: 90vw;
+  background-color: rgb(114, 114, 114, 0.2);
+  border-radius: 10rpx;
+  margin: 150rpx auto 25rpx;
+  padding: 10rpx 0rpx 10rpx 20rpx;
+  line-height: 40rpx;
 }
 .recommended {
   column-count: 2;

@@ -1,5 +1,5 @@
 <!--collect.wxml-->
 <view class="main">
-  <Head tabButton="{{tabButton}}" num="{{num}}" hairImgs="{{hairImgs}}" makeupImgs="{{makeupImgs}}" nailImgs="{{nailImgs}}"></Head>
+  <Head page="collection" tabButton="{{tabButton}}" num="{{num}}" imgs="{{imgs}}" imgCounts="{{imgCounts}}"></Head>
 </view>
 <ScrollTop style="display:{{isHidden}}"></ScrollTop>

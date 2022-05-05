@@ -9,9 +9,7 @@ Page({
       nail: "美甲"
     },
     num: 'hair',
-    hairImgs: [],
-    makeupImgs: [],
-    nailImgs: [],
+    imgs: {},
     isHidden: 'none',
   },
   // 事件处理函数
@@ -24,10 +22,12 @@ Page({
     dbutils.insert('information', 'informations.nail', arr)
   },
   onLoad() {
+    let imgs = {}
     Object.keys(this.data.tabButton).forEach(type => {
       dbutils.items.getDataByType(type, 'imageURL').then(res => {
+        imgs[type] = res.data
         this.setData({
-          [`${type}Imgs`]: res.data
+          imgs: imgs
         })
       })
     })

@@ -1,5 +1,6 @@
 <view class="head">
-  <view class="search-box">
+
+  <view wx:if="{{page === 'main'}}" class="search-box">
     <icon type="search" size="28" color="" class="search"></icon>
     <input type="text" confirm-type="search" value="{{value}}" class="input-box" value="{{inputvalue}}"
       bindinput="bindInputData" />
@@ -8,27 +9,32 @@
     </view>
   </view>
   <view class="tabs-box">
-      <view class="tab font {{num===index?'clicked-tab':''}}" wx:for="{{tabButton}}" wx:for-item="item" wx:key="index">
-        <view bindtap="tapClick" id="{{index}}">{{ item }}</view>
-      </view>
-    <!-- <view bindtap="hairClick" class="tab first-radius font {{num==='hair'?'clicked-tab':''}}" id="hello">{{ tabButton.hair }}
+    <view class="tab font {{num===index?'clicked-tab':''}}" wx:for="{{tabButton}}" wx:for-item="item" wx:key="index">
+      <view bindtap="tabClick" id="{{index}}">{{ item }}</view>
     </view>
-    <view bindtap="makeupClick" class="tab font {{num==='makeup'?'clicked-tab':''}}">{{ tabButton.makeup }}</view>
-    <view bindtap="nailClick" class="tab end-radius font {{num==='nail'?'clicked-tab':''}}">{{ tabButton.nail }}</view> -->
+  </view>
+  <view wx:if="{{page === 'collection'}}" class="collect-num">{{imgCounts[num]}}件</view>
+</view>
+
+<view wx:if="{{num === 'all'}}" class="recommended">
+  <view wx:for="{{imgs}}" wx:for-item="imgsInType" wx:key="index">
+    <view class="image-box" wx:for="{{imgsInType}}" wx:for-item="item" wx:key="index">
+      <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
+    </view>
   </view>
 </view>
 <view wx:if="{{num === 'hair'}}" class="recommended">
-  <view class="image-box" wx:for="{{hairImgs}}" wx:for-item="item" wx:key="index">
+  <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>
 </view>
 <view wx:if="{{num === 'makeup'}}" class="recommended">
-  <view class="image-box" wx:for="{{makeupImgs}}" wx:for-item="item" wx:key="index">
+  <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>
 </view>
 <view wx:if="{{num === 'nail'}}" class="recommended">
-  <view class="image-box" wx:for="{{nailImgs}}" wx:for-item="item" wx:key="index">
+  <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>
 </view>

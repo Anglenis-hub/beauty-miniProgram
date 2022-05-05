@@ -14,25 +14,17 @@ Component({
       type: String,
       value: ''
     },
-    types : {
-      type: Array,
-      value: []
-    },
     num: {
       type: String,
       value: ''
     },
-    hairImgs: {
-      type: Array,
-      value: []
+    imgs: {
+      type: Object,
+      value: {}
     },
-    makeupImgs: {
-      type: Array,
-      value: []
-    },
-    nailImgs: {
-      type: Array,
-      value: []
+    imgCounts: {
+      type: Object,
+      value: {}
     },
     inputvalue: {
       type: String,
@@ -46,7 +38,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    tapClick(e) {
+    tabClick(e) {
       if (this.data.num !== e.currentTarget.id) {
         utils.scrollTop()
       }
@@ -92,7 +84,7 @@ Component({
       }
     },
     'num': function (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 })
