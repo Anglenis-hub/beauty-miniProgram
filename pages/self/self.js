@@ -55,6 +55,11 @@ Page({
     })
   },
   myAppointment() {
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    if (sessionIsExpired) {
+      console.log('user did not login')
+      return
+    }
     wx.navigateTo({
       url: '../myAppointment/myAppointment',
     })
