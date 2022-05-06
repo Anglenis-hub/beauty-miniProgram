@@ -1,5 +1,0 @@
-/* pages/timePicker/timePicker.wxss */
-.page-body {
-  width: 60vw;
-  margin: 0 auto;
-}

@@ -1,26 +1,104 @@
 const dbutils = require('../../utils/database_driver')
+const date = new Date()
+const years = []
+const months = []
+const days = []
+const hours = []
+const minutes = []
+
+for (let i = date.getFullYear() + 1; i >= date.getFullYear(); i--) {
+  years.unshift(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+
+for (let i = 0; i <= 23; i++) {
+  hours.push(i)
+}
+
+for (let i = 0; i < 60; i++) {
+  minutes.push(i)
+}
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    time: '>',
     phoneNumber: '',
-    date: Date,
+    date: Date(),
     imageID: '',
     informations: {},
+    years,
+    year: date.getFullYear(),
+    months,
+    month: date.getMonth()+1,
+    days,
+    day: date.getDay()+1,
+    hours,
+    hour: date.getHours(),
+    minutes,
+    minute: date.getMinutes(),
+    value: [0, date.getMonth(), date.getDay(), date.getHours(), date.getMinutes()],
+    isDaytime: true,
+    isShow: false
   },
   orderTime() {
-    wx.navigateTo({
-      url: '../timePicker/timePicker',
+    this.setData({
+      isShow: !this.data.isShow
     })
   },
-
+  cancel() {
+    this.setData({
+      isShow: !this.data.isShow
+    })
+  },
+  ok() {
+    this.setData({
+      time: `${this.data.year}年 ${this.data.month}月 ${this.data.day}日 ${this.data.hour} : ${this.data.minute}`,
+      date: new Date(this.data.year, this.data.month - 1, this.data.day, this.data.hour, this.data.minute),
+      isShow: !this.data.isShow
+    })
+  },
   orderClick() {
-    const phoneNumber = '13112345678'
-    const date = new Date('December 17, 2022 10:30:00')
+    const phoneNumber = this.data.phoneNumber
+    const date = this.data.date
     const duration = this.data.informations.serviceDuration
+    const localDate = new Date()
+
+    if (new Date(date).getTime() > new Date(localDate).getTime()) {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '无法预约过去的时间'
+      })
+      return
+    }
+    if (this.data.time === '>') {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请选择时间'
+      })
+      return
+    }
+    const regu = /^1\d{10}$/;
+    if (!regu.test(phoneNumber)) {
+      let errorMessage = phoneNumber === '' ? '请填写手机号' : '手机号格式有误'
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: errorMessage
+      })
+      return
+    }
     dbutils.users.pushAppointment({
       itemID: this.data.imageID,
       phoneNumber: phoneNumber,
@@ -50,6 +128,19 @@ Page({
       })
     })
   },
+  bindChange(e) {
+    const val = e.detail.value
+    this.setData({
+      year: this.data.years[val[0]],
+      month: this.data.months[val[1]],
+      day: this.data.days[val[2]],
+      hour: this.data.hours[val[3]],
+      minute: this.data.minutes[val[4]]
+    })
+  },
+  consolePhone: function (e) {
+    console.log(this.data.phoneNumber);
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -69,5 +160,5 @@ Page({
         informations: res.data
       })
     })
-  }
+  },
 })

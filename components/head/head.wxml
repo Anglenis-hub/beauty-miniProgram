@@ -2,7 +2,7 @@
 
   <view wx:if="{{page === 'main'}}" class="search-box">
     <icon type="search" size="28" color="" class="search"></icon>
-    <input type="text" confirm-type="search" value="{{value}}" class="input-box" value="{{inputvalue}}"
+    <input type="text" confirm-type="search" class="input-box" value="{{inputvalue}}"
       bindinput="bindInputData" />
     <view class="clear" bindtap="clearClick">
       <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />

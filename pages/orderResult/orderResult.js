@@ -8,7 +8,7 @@ const formatedDate = (date, durationInMinutes) => {
   date.setMinutes(startMinute + durationInMinutes)
   const endHour = date.getHours()
   const endMinute = date.getMinutes()
-  return `${year}.${month}.${day} ${startHour}:${startMinute}-${endHour}:${endMinute}`
+  return `${year}.${month + 1}.${day} ${startHour}:${startMinute}-${endHour}:${endMinute}`
 }
 
 Page({
@@ -54,7 +54,7 @@ Page({
       this.setData({
         imageID: imageID,
         informations: res.data,
-        phoneNumber:  wx.getStorageSync('clickPassAppointmentPhoneNumber'),
+        phoneNumber: wx.getStorageSync('clickPassAppointmentPhoneNumber'),
         date: formatedDate(date, duration)
       })
     })
