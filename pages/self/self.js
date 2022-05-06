@@ -60,10 +60,25 @@ Page({
       }
     })
   },
+  myInfo() {
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    if (sessionIsExpired) {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请登录后查看'
+      })
+      return
+    }
+  },
   myAppointment() {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
-      console.log('user did not login')
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请登录后查看'
+      })
       return
     }
     wx.navigateTo({

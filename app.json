@@ -6,7 +6,8 @@
     "pages/information/information",
     "pages/order/order",
     "pages/orderResult/orderResult",
-    "pages/myAppointment/myAppointment"
+    "pages/myAppointment/myAppointment",
+    "pages/timePicker/timePicker"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -10,7 +10,7 @@
       </view>
     </view>
     <view class="line"></view>
-    <view class="order-time">
+    <view class="order-time" bindtap="orderTime">
       <view>
         <text>预约时间</text>
       </view>

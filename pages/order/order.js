@@ -11,6 +11,11 @@ Page({
     imageID: '',
     informations: {},
   },
+  orderTime() {
+    wx.navigateTo({
+      url: '../timePicker/timePicker',
+    })
+  },
 
   orderClick() {
     const phoneNumber = '13112345678'
