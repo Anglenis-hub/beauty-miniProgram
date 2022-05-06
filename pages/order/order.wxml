@@ -12,7 +12,6 @@
     <view class="line"></view>
     <view class="order-time">
       <view>
-        <!-- <image src="../../static/image/home.png" mode="widthFix" class="order-icon"></image> -->
         <text>预约时间</text>
       </view>
       <text>></text>

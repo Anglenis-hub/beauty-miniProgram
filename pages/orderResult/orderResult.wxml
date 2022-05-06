@@ -6,13 +6,13 @@
   </view>
   <view class="order-box">
     <view class="order-info">
-      <image src="../../static/image/hair1.jpg" mode="widthFix" class="order-img"></image>
+      <image src="{{informations.imageURL}}" mode="widthFix" class="order-img"></image>
       <view class="details">
-        <view class="detail title">可爱甜美短发</view>
-        <view class="detail">服务时间：2022.4.14 16：00-17：00</view>
-        <view class="detail">发型师：张三</view>
-        <view class="detail">预约手机号：15522221111</view>
-        <view class="detail">价格：￥500</view>
+        <view class="detail title">{{informations.title}}</view>
+        <view class="detail">服务时间：{{date}}</view>
+        <view class="detail">发型师：{{informations.staffName}}</view>
+        <view class="detail">预约手机号：{{phoneNumber}}</view>
+        <view class="detail">价格：￥{{informations.price}}</view>
       </view>
     </view>
   </view>
