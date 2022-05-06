@@ -15,17 +15,17 @@ Page({
   orderClick() {
     const phoneNumber = '13112345678'
     const date = new Date('December 17, 2022 10:30:00')
-    const serviceDuration = 50
+    const duration = this.data.informations.serviceDuration
     dbutils.users.pushAppointment({
       itemID: this.data.imageID,
       phoneNumber: phoneNumber,
       date: date,
-      serviceDuration: serviceDuration
+      serviceDuration: duration
     }).then(() => {
       // 成功更新数据库，切换到预约成功页面
       wx.setStorageSync('clickPassAppointmentPhoneNumber', phoneNumber)
       wx.setStorageSync('clickPassAppointmentDate', date)
-      wx.setStorageSync('clickPassServiceDuration', serviceDuration)
+      wx.setStorageSync('clickPassServiceDuration', duration)
       wx.navigateTo({
         url: '../orderResult/orderResult'
       })

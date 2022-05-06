@@ -33,7 +33,7 @@ App({
     // 检查session是否过期
     checkSession().then(() => {
       // 如果session未过期
-      wx.setStorageSync('sessionIsExpired', false)
+      wx.setStorageSync('sessionIsExpired', true)
     }).catch(err => {
       // 如果session已过期
       if (err.message === 'session has expired') {

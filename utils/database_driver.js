@@ -100,23 +100,11 @@ export const items = {
       [key]: true
     }).get()
   },
-  add(info) {
-    const hash = getHash(JSON.stringify(info))
+  add(item) {
+    const hash = getHash(JSON.stringify(item))
+    item['_id'] = hash
     db.collection(itemTable).add({
-      data: {
-        _id: hash,
-        type: info.type,
-        imageURL: info.imageURL,
-        address: info.address,
-        price: info.price,
-        shopName: info.shopName,
-        shopImageURL: info.shopImageURL,
-        staffName: info.staffName,
-        staffImageURL: info.staffImageURL,
-        staffDescription: info.staffDescription,
-        time: info.time,
-        title: info.title
-      },
+      data: item,
       // 如果项目已存在，提示错误信息
       fail: function (res) {
         if (res.errMsg === '[FailedOperation.DuplicateWrite] multiple write,duplicate key error collection') {
@@ -125,4 +113,72 @@ export const items = {
       }
     })
   }
+}
+
+export const getRandomItem = () => {
+  // 获得一个能被dividedBy整除的在min到max范围的整数，比如
+  // randomIntFromInterval(1, 10) > 1到10的随机数
+  // randomIntFromInterval(1, 100, 5) > 1到100能被5整除的随机数
+  const randomIntFromInterval = (min, max, dividedBy = 1) => {
+    return Math.floor(Math.random() * (max - min + 1) / dividedBy + min / dividedBy) * dividedBy
+  }
+  const randomElementFromArray = (array) => {
+    return array[Math.floor(Math.random() * array.length)]
+  }
+  const shopNames = ["3A美容店", "艺剪坊", "绝色发艺", "秀艳阁", "颠峰之秀", "东尼", "引领潮流", "得艺忘型"]
+  const staffDescription = ["从事美容行业近8年时间，全面的技术经验，95%以上顾客满意率"]
+  const addresses = ["陕西省琴市大东辽阳路Q座", "四川省楠市秀英林路F座", "重庆市颖市锡山宁德街o座", "广西壮族自治区红梅市南溪邓路M座", "江西省上海市永川邱路H座", "河南省凤兰县城北陈路l座", "江西省沈阳县蓟州成都路U座", "辽宁省慧市黄浦翟路E座"]
+  const staffName = {
+    male: ['国安康', '厍华茂', '巢子昂', '茹玉成', '董康安'],
+    female: ['程欣跃', '冷迎蓉', '宫望舒', '闻诗霜', '沈欣嘉']
+  }
+  const titles = ['可爱甜美', '清新自然', '清歌缈缦', '青树翠蔓', '夏花冬雪', '暗似黛绿', '心岛初晴', '时尚大方']
+
+  const cloudURL = 'cloud://cloud1-2ghfekqc5cf347a4.636c-cloud1-2ghfekqc5cf347a4-1309526496/images/'
+
+  const sex = ['male', 'female']
+  const types = ['hair', 'makeup', 'nail']
+  const titleSuffix = {
+    hair: '风格发型',
+    makeup: '风美妆',
+    nail: '风美甲'
+  }
+  // 在云存储中总共的各种类型的图片数量
+  const totalImageNumber = {
+    male: 4,
+    female: 4,
+    shop: 5,
+    hair: 7,
+    makeup: 7,
+    nail: 7
+  }
+
+  let data = []
+
+  types.forEach(type => {
+    for (let i = 1; i <= totalImageNumber[type]; i++) {
+      const randomSex = randomElementFromArray(sex)
+      const randomStaffName = randomElementFromArray(staffName[randomSex])
+      const randomStaffImageURL = cloudURL + 'staff-' + randomSex + randomIntFromInterval(1, totalImageNumber[randomSex]) + '.jpg'
+      const imageURL = cloudURL + type + i + '.jpg'
+      const randomShopImage = cloudURL + 'shopImage' + randomIntFromInterval(1, totalImageNumber['shop']) + '.jpg'
+
+      data.push({
+        "shopName": shopNames[Math.floor(Math.random() * shopNames.length)],
+        "staffDescription": staffDescription,
+        "staffImageURL": randomStaffImageURL,
+        "address": addresses[Math.floor(Math.random() * addresses.length)],
+        "shopImageURL": randomShopImage,
+        "staffName": randomStaffName,
+        "time": "周一~周日10：00-22：00",
+        "serviceDuration": randomIntFromInterval(50, 180, 5),
+        "title": randomElementFromArray(titles) + titleSuffix[type],
+        "type": type,
+        "imageURL": imageURL,
+        "price": randomIntFromInterval(20, 200)
+      })
+    }
+  })
+
+  return data
 }

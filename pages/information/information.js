@@ -42,7 +42,11 @@ Page({
   loveClick: function (e) {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
-      console.log('user did not login')
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请登录后收藏'
+      })
       return
     }
 
@@ -68,7 +72,11 @@ Page({
   orderClick() {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
-      console.log('user did not login')
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请登录后预约'
+      })
       return
     }
 

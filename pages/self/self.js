@@ -25,6 +25,12 @@ Page({
     userName: '立即登录'
   },
   onClickSignup(e) {
+
+    // const items = dbutils.getRandomItem()
+    // items.forEach(item => {
+    //   dbutils.items.add(item)
+    // })
+    // return
     const thisPage = this
     // 提示用户授权获取昵称和头像url
     wx.getUserProfile({
