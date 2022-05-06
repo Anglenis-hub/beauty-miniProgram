@@ -13,7 +13,7 @@
       <view bindtap="tabClick" id="{{index}}">{{ item }}</view>
     </view>
   </view>
-  <view wx:if="{{page === 'collection'}}" class="collect-num">{{imgCounts[num]}}件</view>
+  <view wx:if="{{page === 'collection'}}" class="collect-num">{{collectNumInfo}}</view>
 </view>
 
 <view wx:if="{{num === 'all'}}" class="recommended">

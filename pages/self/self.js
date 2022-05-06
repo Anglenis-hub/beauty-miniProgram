@@ -54,6 +54,16 @@ Page({
       }
     })
   },
+  myAppointment() {
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    if (sessionIsExpired) {
+      console.log('user did not login')
+      return
+    }
+    wx.navigateTo({
+      url: '../myAppointment/myAppointment',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

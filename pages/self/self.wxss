@@ -7,7 +7,6 @@
 .head {
   height: 250rpx;
   background-color: rgb(219, 139, 159, 0.8);
-  /* background: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.huabanimg.com%2Faece5477d2ea95d5963da6442cfeea929dbbc5d95c34c-ViloZK_fw236&refer=http%3A%2F%2Fhbimg.huabanimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1654260437&t=54263aadd8fb19e0b0f4c9c683853e6a') no-repeat; */
   margin-bottom: 30rpx;
 }
 .login-btn {
