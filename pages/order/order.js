@@ -39,9 +39,9 @@ Page({
     years,
     year: date.getFullYear(),
     months,
-    month: date.getMonth()+1,
+    month: date.getMonth() + 1,
     days,
-    day: date.getDay()+1,
+    day: date.getDay() + 1,
     hours,
     hour: date.getHours(),
     minutes,
@@ -72,8 +72,9 @@ Page({
     const date = this.data.date
     const duration = this.data.informations.serviceDuration
     const localDate = new Date()
+    console.log(date)
 
-    if (new Date(date).getTime() > new Date(localDate).getTime()) {
+    if (new Date(date).getTime() < new Date(localDate).getTime()) {
       wx.showModal({
         showCancel: false,
         title: '',
