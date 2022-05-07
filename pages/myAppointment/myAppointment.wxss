@@ -6,6 +6,19 @@
 page{
   background-color: rgb(165, 165, 165, 0.2);
 }
+.null-box {
+  position: absolute;
+  width: 90vw;
+  height: 150rpx;
+  line-height: 150rpx;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 30rpx;
+  background-color: #fff;
+  text-align: center;
+  font-size: 40rpx;
+}
 .order-box {
   position: relative;
   width: 90vw;

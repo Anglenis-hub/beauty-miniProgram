@@ -10,7 +10,6 @@
   left: 50%;
   transform: translate(-50%, 0%);
   width: 90vw;
-  height: 690rpx;
   margin: 0rpx auto;
   border-radius: 30rpx;
   background-color: #fff;
@@ -94,7 +93,7 @@
 }
 .btns .btn {
   border-radius: 20rpx;
-  border: 1rpx solid gray;
+  border: 1px solid gray;
   width: 20vw;
   height: 55rpx;
   line-height: 55rpx;

@@ -1,4 +1,5 @@
 <view class="main">
+  <view class="null-box" wx:if="{{isNull}}">您还没有预约任何服务项目</view>
   <view class="order-box" wx:for="{{pageInfos}}" wx:key="item">
     <view class="absoulute">
       <view class="shop-name">{{item.information.shopName}}</view>

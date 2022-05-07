@@ -29,7 +29,8 @@ Page({
    */
   data: {
     appointments: {},
-    pageInfos: []
+    pageInfos: [],
+    isNull: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -73,6 +74,11 @@ Page({
       this.setData({
         appointments: appointments
       })
+      if (appointments.length === 0) {
+        this.setData({
+          isNull: true
+        })
+      }
       getInformationsByAppointments(appointments).then(pageInfos => {
         this.setData({
           pageInfos: pageInfos

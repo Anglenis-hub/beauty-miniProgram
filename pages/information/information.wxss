@@ -1,6 +1,7 @@
 .main {
   width: 90vw;
   margin: 0 5vw;
+  padding-bottom: 25rpx;
 }
 .head-img {
   width: 90vw;
@@ -62,7 +63,7 @@
   font-size: 30rpx;
 }
 .order-btn {
-  margin: 40rpx 0;
+  margin: 40rpx 0 50rpx;
   background-color: rgb(219, 139, 159);
   color: white;
 }

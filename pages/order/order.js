@@ -33,7 +33,7 @@ Page({
   data: {
     time: '>',
     phoneNumber: '',
-    date: Date(),
+    date: new Date(),
     imageID: '',
     informations: {},
     years,
@@ -41,12 +41,12 @@ Page({
     months,
     month: date.getMonth() + 1,
     days,
-    day: date.getDay() + 1,
+    day: date.getDate(),
     hours,
     hour: date.getHours(),
     minutes,
     minute: date.getMinutes(),
-    value: [0, date.getMonth(), date.getDay(), date.getHours(), date.getMinutes()],
+    value: [0, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
     isDaytime: true,
     isShow: false
   },
