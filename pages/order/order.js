@@ -103,8 +103,7 @@ Page({
     dbutils.users.pushAppointment({
       itemID: this.data.imageID,
       phoneNumber: phoneNumber,
-      date: date,
-      serviceDuration: duration
+      date: date
     }).then(() => {
       // 成功更新数据库，切换到预约成功页面
       wx.setStorageSync('clickPassAppointmentPhoneNumber', phoneNumber)

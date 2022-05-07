@@ -1,5 +1,5 @@
 const dbutils = require('../../utils/database_driver')
-const formatedDate = (date, durationInMinutes) => {
+const formatDate = (date, durationInMinutes) => {
   const year = date.getFullYear()
   const month = date.getMonth()
   const day = date.getDate()
@@ -55,7 +55,7 @@ Page({
         imageID: imageID,
         informations: res.data,
         phoneNumber: wx.getStorageSync('clickPassAppointmentPhoneNumber'),
-        date: formatedDate(date, duration)
+        date: formatDate(date, duration)
       })
     })
 

@@ -9,7 +9,7 @@ page{
 .order-box {
   position: relative;
   width: 90vw;
-  height: 470rpx;
+  height: 560rpx;
   margin: 20rpx auto;
   border-radius: 30rpx;
   background-color: #fff;
@@ -22,7 +22,7 @@ page{
 .order-info {
   display: flex;
   flex-direction: row;
-  margin: 30rpx 30rpx 0rpx 30rpx;
+  margin: 30rpx 30rpx 0rpx 0rpx;
 }
 .details {
   width: 50vw;
@@ -81,11 +81,11 @@ page{
   justify-content: flex-end;
 }
 .btns .btn {
-  border-radius: 40rpx;
-  border: 1rpx solid gray;
-  width: 20vw;
-  height: 55rpx;
-  line-height: 55rpx;
+  border-radius: 30rpx;
+  border: 1px solid gray;
+  width: 25vw;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
   margin-left: 20rpx;
 }

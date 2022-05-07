@@ -1,4 +1,3 @@
-const tableName = 'beautyTable'
 const userTable = 'users'
 const itemTable = 'items'
 const db = wx.cloud.database()
@@ -60,12 +59,9 @@ export const users = {
     })
   },
   updateAppointments(appointments) {
-    db.collection(userTable).doc(this.openid).update({
+    return db.collection(userTable).doc(this.openid).update({
       data: {
         appointments: appointments
-      },
-      fail: function (res) {
-        console.error(res)
       }
     })
   },

@@ -9,7 +9,8 @@
       <image src="{{informations.imageURL}}" mode="widthFix" class="order-img"></image>
       <view class="details">
         <view class="detail title">{{informations.title}}</view>
-        <view class="detail">服务时间：{{date}}</view>
+          <view class="detail">耗时：{{informations.serviceDuration}}分钟</view>
+          <view class="detail">服务时间：{{date}}</view>
         <view class="detail">发型师：{{informations.staffName}}</view>
         <view class="detail">预约手机号：{{phoneNumber}}</view>
         <view class="detail">价格：￥{{informations.price}}</view>
