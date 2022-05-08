@@ -71,7 +71,7 @@ Page({
     }).catch(err => {
       wx.showModal({
         showCancel: false,
-        title: '预约失败',
+        title: '收藏失败',
         content: err.errMsg
       })
     })

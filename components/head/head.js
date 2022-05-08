@@ -89,11 +89,7 @@ Component({
     },
     'imgCounts, num': function (imgCounts, num) {
       const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
-      if (sessionIsExpired) {
-        this.setData({
-          collectNumInfo: '请登录后查看'
-        })
-      } else {
+      if (!sessionIsExpired) {
         this.setData({
           collectNumInfo: imgCounts[num] + '件'
         })

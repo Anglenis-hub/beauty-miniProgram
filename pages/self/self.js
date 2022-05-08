@@ -8,6 +8,13 @@ const login = (page) => {
       let sessionKey = res.signature
       wx.setStorageSync('session_key', sessionKey)
       wx.setStorageSync('sessionIsExpired', false)
+    },
+    fail: (err) => {
+      wx.showModal({
+        showCancel: false,
+        title: '获取用户信息失败',
+        content: err.errMsg
+      })
     }
   })
   page.setData({
@@ -53,8 +60,19 @@ Page({
             login(thisPage)
           } else {
             // 其他错误
-            console.error(err)
+            wx.showModal({
+              showCancel: false,
+              title: '注册失败',
+              content: err.errMsg
+            })
           }
+        })
+      },
+      fail: (err) => {
+        wx.showModal({
+          showCancel: false,
+          title: '获取用户信息失败',
+          content: err.errMsg
         })
       }
     })
