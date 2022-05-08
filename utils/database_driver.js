@@ -17,27 +17,27 @@ const getHash = (str) => {
 }
 
 export const users = {
-  openid: wx.getStorageSync('openid'),
   getData() {
-    return db.collection(userTable).doc(this.openid).get()
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).get()
   },
   getCollections() {
-    return db.collection(userTable).doc(this.openid).field({
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).field({
       collections: true
     }).get()
   },
   updateCollections(collections) {
-    db.collection(userTable).doc(this.openid).update({
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).update({
       data: {
         collections: collections
-      },
-      fail: function (res) {
-        console.error(res)
       }
     })
   },
   getAppointments() {
-    return db.collection(userTable).doc(this.openid).field({
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).field({
       appointments: true
     }).get()
   },
@@ -49,26 +49,26 @@ export const users = {
     if (found) {
       throw new Error('appointment already exist')
     }
-    db.collection(userTable).doc(this.openid).update({
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).update({
       data: {
         appointments: _.push(appointment)
-      },
-      fail: function (res) {
-        console.error(res)
       }
     })
   },
   updateAppointments(appointments) {
-    return db.collection(userTable).doc(this.openid).update({
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).update({
       data: {
         appointments: appointments
       }
     })
   },
   signUp(name, avatarUrl) {
+    const openid = wx.getStorageSync('openid')
     return db.collection(userTable).add({
       data: {
-        _id: this.openid,
+        _id: openid,
         username: name,
         avatarUrl: avatarUrl,
         collections: [],

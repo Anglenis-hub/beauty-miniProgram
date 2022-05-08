@@ -22,6 +22,7 @@ App({
     wx.cloud.callFunction({
       name: 'getWXContext',
       success: function (res) {
+        // console.log(res.result)
         wx.setStorage({
           key: 'openid',
           data: res.result.openid
@@ -39,7 +40,11 @@ App({
       if (err.message === 'session has expired') {
         wx.setStorageSync('sessionIsExpired', true)
       } else {
-        console.error(err)
+        wx.showModal({
+          showCancel: false,
+          title: '获取用户信息失败',
+          content: err.errMsg
+        })
       }
     })
   },

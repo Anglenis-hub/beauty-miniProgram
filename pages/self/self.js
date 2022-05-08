@@ -8,6 +8,13 @@ const login = (page) => {
       let sessionKey = res.signature
       wx.setStorageSync('session_key', sessionKey)
       wx.setStorageSync('sessionIsExpired', false)
+    },
+    fail: (err) => {
+      wx.showModal({
+        showCancel: false,
+        title: '获取用户信息失败',
+        content: err.errMsg
+      })
     }
   })
   page.setData({
@@ -41,7 +48,7 @@ Page({
         wx.setStorageSync('avatarUrl', avatarUrl)
         wx.setStorageSync('userName', userName)
         // 注册用户
-        dbutils.users.signUp(userName, avatarUrl).then(res2 => {
+        dbutils.users.signUp(userName, avatarUrl).then(() => {
           // 注册成功后，login
           console.log("user login with signed up")
           login(thisPage)
@@ -53,8 +60,19 @@ Page({
             login(thisPage)
           } else {
             // 其他错误
-            console.error(err)
+            wx.showModal({
+              showCancel: false,
+              title: '注册失败',
+              content: err.errMsg
+            })
           }
+        })
+      },
+      fail: (err) => {
+        wx.showModal({
+          showCancel: false,
+          title: '获取用户信息失败',
+          content: err.errMsg
         })
       }
     })

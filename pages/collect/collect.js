@@ -14,12 +14,16 @@ Page({
     imgs: {},
     imgCounts: {},
     isHidden: 'none',
+    collectNumInfo: ''
   },
   onLoad: function () {},
   onShow: function () {
     // onLoad只有第一次点击页面会执行，之后切换到其他页面在切回来的时候只有onShow会执行
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
+      this.setData({
+        collectNumInfo: '请登录后查看'
+      })
       console.log('user did not login')
       return
     }
