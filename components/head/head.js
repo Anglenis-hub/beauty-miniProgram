@@ -37,17 +37,37 @@ Component({
   },
   data: {
     clearShow: false,
+    searchedIsNull: false
   },
   /**
    * 组件的方法列表
    */
   methods: {
     tabClick(e) {
+      // console.log(e)
       if (this.data.num !== e.currentTarget.id) {
         utils.scrollTop()
       }
       this.setData({
         num: e.currentTarget.id
+      })
+      let imgs = {}
+      dbutils.items.search(e.currentTarget.dataset.inputvalue, e.currentTarget.id).then(res => {
+        console.log(res.data);
+        if (res.data.length === 0) {
+          this.setData({
+            searchedIsNull: true
+          })
+          return
+        } else {
+          this.setData({
+            searchedIsNull: false
+          })
+        }
+        imgs[e.currentTarget.id] = res.data
+        this.setData({
+          imgs: imgs
+        })
       })
     },
     imgClick: function (e) {
@@ -68,10 +88,49 @@ Component({
         inputvalue: e.detail.value
       });
     },
+    searchClick: function (e) {
+      // console.log(e.detail.value)
+      let imgs = {}
+      dbutils.items.search(e.detail.value, this.data.num).then(res => {
+        console.log(res.data);
+        if (res.data.length === 0) {
+          this.setData({
+            searchedIsNull: true
+          })
+          return
+        } else {
+          this.setData({
+            searchedIsNull: false
+          })
+        }
+        imgs[this.data.num] = res.data
+        this.setData({
+          imgs: imgs
+        })
+      })
+    },
     clearClick() {
       this.setData({
         inputvalue: ''
       });
+      //清空搜索内容，获取全部内容
+      let imgs = {}
+      dbutils.items.search('', this.data.num).then(res => {
+        if (res.data.length === 0) {
+          this.setData({
+            searchedIsNull: true
+          })
+          return
+        } else {
+          this.setData({
+            searchedIsNull: false
+          })
+        }
+        imgs[this.data.num] = res.data
+        this.setData({
+          imgs: imgs
+        })
+      })
     }
   },
   observers: {

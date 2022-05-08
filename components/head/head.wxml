@@ -1,20 +1,21 @@
 <view class="head">
-
   <view wx:if="{{page === 'main'}}" class="search-box">
     <icon type="search" size="28" color="" class="search"></icon>
-    <input type="text" confirm-type="search" class="input-box" value="{{inputvalue}}"
-      bindinput="bindInputData" />
+    <input type="text" confirm-type="search" class="input-box" value="{{inputvalue}}" bindinput="bindInputData"
+      bindconfirm="searchClick" />
     <view class="clear" bindtap="clearClick">
       <icon type="clear" size="20" class="{{clearShow ? 'show' : 'hide'}}" />
     </view>
   </view>
   <view class="tabs-box">
     <view class="tab font {{num===index?'clicked-tab':''}}" wx:for="{{tabButton}}" wx:for-item="item" wx:key="index">
-      <view bindtap="tabClick" id="{{index}}">{{ item }}</view>
+      <view bindtap="tabClick" id="{{index}}" data-inputvalue="{{inputvalue}}">{{ item }}</view>
     </view>
   </view>
   <view wx:if="{{page === 'collection'}}" class="collect-num">{{collectNumInfo}}</view>
 </view>
+<!-- 搜索空提示 -->
+<view class="null-box" wx:if="{{searchedIsNull === true}}">未搜索到任何内容</view>
 
 <view wx:if="{{num === 'all'}}" class="recommended">
   <view wx:for="{{imgs}}" wx:for-item="imgsInType" wx:key="index">
@@ -23,17 +24,17 @@
     </view>
   </view>
 </view>
-<view wx:if="{{num === 'hair'}}" class="recommended">
+<view wx:if="{{num === 'hair' && searchedIsNull === false}}" class="recommended">
   <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>
 </view>
-<view wx:if="{{num === 'makeup'}}" class="recommended">
+<view wx:if="{{num === 'makeup' && searchedIsNull === false}}" class="recommended">
   <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>
 </view>
-<view wx:if="{{num === 'nail'}}" class="recommended">
+<view wx:if="{{num === 'nail' && searchedIsNull === false}}" class="recommended">
   <view class="image-box" wx:for="{{imgs[num]}}" wx:for-item="item" wx:key="index">
     <image src="{{item.imageURL}}" mode='widthFix' class="img" bindtap="imgClick" data-id="{{item._id}}"></image>
   </view>

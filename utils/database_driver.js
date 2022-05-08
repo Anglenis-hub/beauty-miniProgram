@@ -108,6 +108,23 @@ export const items = {
         }
       }
     })
+  },
+  //模糊搜索
+  search(word, type) {
+    return db.collection(itemTable).where(_.and(
+      [{
+        title: db.RegExp({
+          regexp: word,
+          options: 'i', //大小写不区分
+        })
+      },
+      {
+        type: db.RegExp({
+          regexp: type,
+          options: 'i', //大小写不区分
+        })
+      }
+      ])).get()
   }
 }
 

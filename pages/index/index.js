@@ -18,9 +18,6 @@ Page({
       url: '../collect/collect'
     })
   },
-  createInfo() {
-    dbutils.insert('information', 'informations.nail', arr)
-  },
   onLoad() {
     let imgs = {}
     Object.keys(this.data.tabButton).forEach(type => {

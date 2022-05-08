@@ -2,5 +2,5 @@
 <view class="main">
   <Head page="main" tabButton="{{tabButton}}" num="{{num}}" imgs="{{imgs}}"></Head>
 </view>
-<!-- <button bindtap="createInfo">新增信息</button> -->
+<!-- <button bindtap="test">测试搜索功能</button> -->
 <ScrollTop style="display:{{isHidden}}"></ScrollTop>
