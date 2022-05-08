@@ -16,4 +16,5 @@
       <text>></text>
     </view>
   </view>
+  <button style="width: 90vw;" class="order-btn" bindtap="logoutClick">退出登录</button>
 </view>

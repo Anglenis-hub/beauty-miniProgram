@@ -46,3 +46,9 @@
   border-radius: 15rpx;
   background-color: #fff;
 }
+.order-btn {
+  top: 58%;
+  /* margin: 40rpx 0 50rpx; */
+  background-color: rgb(219, 139, 159);
+  color: white;
+}

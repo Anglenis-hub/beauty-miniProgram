@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "Beauty",
   "usingComponents": {
     "Head": "../../components/head/head",
     "ScrollTop":"../../components/scrollTop/scrollTop"

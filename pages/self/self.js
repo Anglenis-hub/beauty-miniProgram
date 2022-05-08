@@ -40,9 +40,8 @@ Page({
         const userName = res.userInfo.nickName
         wx.setStorageSync('avatarUrl', avatarUrl)
         wx.setStorageSync('userName', userName)
-        const openid = wx.getStorageSync('openid')
         // 注册用户
-        dbutils.users.signUp(userName, avatarUrl, openid).then(res2 => {
+        dbutils.users.signUp(userName, avatarUrl).then(res2 => {
           // 注册成功后，login
           console.log("user login with signed up")
           login(thisPage)
@@ -84,6 +83,14 @@ Page({
     wx.navigateTo({
       url: '../myAppointment/myAppointment',
     })
+  },
+  logoutClick(){
+    console.log('logout')
+    this.setData({
+      avatarUrl: defaultAvatarUrl,
+      userName: '立即登录'
+    })
+    wx.setStorageSync('sessionIsExpired', true)
   },
   /**
    * 生命周期函数--监听页面加载
