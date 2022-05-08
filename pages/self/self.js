@@ -19,7 +19,8 @@ const login = (page) => {
   })
   page.setData({
     avatarUrl: wx.getStorageSync('avatarUrl'),
-    userName: wx.getStorageSync('userName')
+    userName: wx.getStorageSync('userName'),
+    isLogin: false
   })
 }
 
@@ -28,11 +29,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: defaultAvatarUrl,
-    userName: '立即登录'
+    avatarUrl: '',
+    userName: '',
+    isLogin: true
   },
   onClickSignup(e) {
-
     // const items = dbutils.getRandomItem()
     // items.forEach(item => {
     //   dbutils.items.add(item)
@@ -77,17 +78,6 @@ Page({
       }
     })
   },
-  myInfo() {
-    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
-    if (sessionIsExpired) {
-      wx.showModal({
-        showCancel: false,
-        title: '',
-        content: '请登录后查看'
-      })
-      return
-    }
-  },
   myAppointment() {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
@@ -102,12 +92,13 @@ Page({
       url: '../myAppointment/myAppointment',
     })
   },
-  logoutClick(){
-    console.log('logout')
+  logoutClick() {
     this.setData({
       avatarUrl: defaultAvatarUrl,
-      userName: '立即登录'
+      userName: '立即登录',
+      isLogin: true
     })
+    wx.clearStorage()
     wx.setStorageSync('sessionIsExpired', true)
   },
   /**
@@ -123,4 +114,13 @@ Page({
       login(thisPage)
     }
   },
+  onShow: function (options) {
+    const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    if (sessionIsExpired === true || sessionIsExpired === '') {
+      this.setData({
+        avatarUrl: defaultAvatarUrl,
+        userName: '立即登录'
+      })
+    }
+  }
 })

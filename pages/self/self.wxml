@@ -6,15 +6,11 @@
       <view class="user-name" bindtap="onClickSignup">{{userName}}</view>
     </view>
   </view>
-  <view class="my-things" bindtap="myInfo">
-    <!-- <view class="my-thing">
-      <text>我的信息</text>
-      <text>></text>
-    </view> -->
+  <view class="my-things">
     <view class="my-thing" bindtap="myAppointment">
       <text>我的预约</text>
       <text>></text>
     </view>
   </view>
-  <button style="width: 90vw;" class="order-btn" bindtap="logoutClick">退出登录</button>
+  <button wx:if="{{isLogin === false}}" style="width: 90vw;" class="order-btn" bindtap="logoutClick">退出登录</button>
 </view>

@@ -22,7 +22,9 @@ Page({
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
       this.setData({
-        collectNumInfo: '请登录后查看'
+        collectNumInfo: '请登录后查看',
+        imgs: {},
+        imgCounts: {}
       })
       console.log('user did not login')
       return

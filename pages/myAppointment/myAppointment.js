@@ -59,7 +59,6 @@ Page({
   },
 
   onShow: function () {
-    console.log('onShow')
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
     if (sessionIsExpired) {
       wx.showModal({
