@@ -27,12 +27,9 @@ export const users = {
     }).get()
   },
   updateCollections(collections) {
-    db.collection(userTable).doc(this.openid).update({
+    return db.collection(userTable).doc(this.openid).update({
       data: {
         collections: collections
-      },
-      fail: function (res) {
-        console.error(res)
       }
     })
   },
@@ -49,12 +46,9 @@ export const users = {
     if (found) {
       throw new Error('appointment already exist')
     }
-    db.collection(userTable).doc(this.openid).update({
+    return db.collection(userTable).doc(this.openid).update({
       data: {
         appointments: _.push(appointment)
-      },
-      fail: function (res) {
-        console.error(res)
       }
     })
   },

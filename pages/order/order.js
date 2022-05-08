@@ -118,8 +118,7 @@ Page({
       if (err.message === 'appointment already exist') {
         errorMessage = '您已预约'
       } else {
-        console.error(err)
-        errorMessage = '未知错误'
+        errorMessage = err.errMsg
       }
       wx.showModal({
         showCancel: false,

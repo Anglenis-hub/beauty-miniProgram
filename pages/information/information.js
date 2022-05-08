@@ -61,12 +61,19 @@ Page({
       // 否则添加id进入用户收藏数组
       userCollections.push(imageID)
     }
-    dbutils.users.updateCollections(userCollections)
 
-    // 反转按钮状态，并更新页面缓存的收藏数组
-    this.setData({
-      userCollections: userCollections,
-      heartIconIsLoved: !loved
+    dbutils.users.updateCollections(userCollections).then(() => {
+      // 反转按钮状态，并更新页面缓存的收藏数组
+      this.setData({
+        userCollections: userCollections,
+        heartIconIsLoved: !loved
+      })
+    }).catch(err => {
+      wx.showModal({
+        showCancel: false,
+        title: '预约失败',
+        content: err.errMsg
+      })
     })
   },
   orderClick() {
