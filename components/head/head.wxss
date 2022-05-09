@@ -3,7 +3,7 @@
 }
 .head {
   position: fixed;
-  top: 0rpx;
+  top: -1rpx;
   width: 100vw;
   height: 210rpx;
   margin: 0 auto;

@@ -76,7 +76,8 @@ export const users = {
         username: name,
         avatarUrl: avatarUrl,
         collections: [],
-        appointments: []
+        appointments: [],
+        isShop: false
       }
     })
   }
@@ -117,17 +118,17 @@ export const items = {
   search(word, type) {
     return db.collection(itemTable).where(_.and(
       [{
-          title: db.RegExp({
-            regexp: word,
-            options: 'i', //大小写不区分
-          })
-        },
-        {
-          type: db.RegExp({
-            regexp: type,
-            options: 'i', //大小写不区分
-          })
-        }
+        title: db.RegExp({
+          regexp: word,
+          options: 'i', //大小写不区分
+        })
+      },
+      {
+        type: db.RegExp({
+          regexp: type,
+          options: 'i', //大小写不区分
+        })
+      }
       ])).get()
   }
 }
@@ -143,7 +144,7 @@ export const getRandomItem = () => {
     return array[Math.floor(Math.random() * array.length)]
   }
   const shopNames = ["3A美容店", "艺剪坊", "绝色发艺", "秀艳阁", "颠峰之秀", "东尼", "引领潮流", "得艺忘型"]
-  const staffDescription = ["从事美容行业近8年时间，全面的技术经验，95%以上顾客满意率"]
+  const staffDescription = "从事美容行业近8年时间，全面的技术经验，95%以上顾客满意率"
   const addresses = ["陕西省琴市大东辽阳路Q座", "四川省楠市秀英林路F座", "重庆市颖市锡山宁德街o座", "广西壮族自治区红梅市南溪邓路M座", "江西省上海市永川邱路H座", "河南省凤兰县城北陈路l座", "江西省沈阳县蓟州成都路U座", "辽宁省慧市黄浦翟路E座"]
   const staffName = {
     male: ['国安康', '厍华茂', '巢子昂', '茹玉成', '董康安'],
@@ -199,3 +200,7 @@ export const getRandomItem = () => {
 
   return data
 }
+//发布作品
+// export const pushWork = (work) => {
+//   dbutils.items.add(item)
+// }

@@ -9,7 +9,7 @@ page {
   background-color: rgba(204, 204, 204, 0.1);
   position: fixed;
   right: 40rpx;
-  bottom: 40rpx;
+  bottom: 9%;
 }
 .top-icon {
   width: 50rpx;

@@ -29,6 +29,9 @@ Page({
       })
     })
   },
+  onShow() {
+    this.onLoad()
+  },
   onPageScroll(e) {
     // console.log(e);
     if (e.scrollTop !== 0) {

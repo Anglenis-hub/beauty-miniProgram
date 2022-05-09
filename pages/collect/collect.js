@@ -14,9 +14,11 @@ Page({
     imgs: {},
     imgCounts: {},
     isHidden: 'none',
-    collectNumInfo: ''
+    collectNumInfo: '',
+    isShop: false,
+    userPhoto: ''
   },
-  onLoad: function () {},
+  onLoad: function () { },
   onShow: function () {
     // onLoad只有第一次点击页面会执行，之后切换到其他页面在切回来的时候只有onShow会执行
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
@@ -31,9 +33,17 @@ Page({
     }
 
     // 如果用户已登录
+    const isShop = wx.getStorageSync('isShop')
+    if (isShop) {
+      this.setData({
+        isShop: true,
+      })
+      wx.setNavigationBarTitle({
+        title: "作品集"
+      })
+    }
     dbutils.users.getCollections().then(_res => {
       const userCollections = _res.data.collections
-
       dbutils.items.getDataMatchedIDsAndKeys(userCollections, 'type', 'imageURL').then(res => {
         const items = res.data
         let imgs = {}
@@ -67,7 +77,12 @@ Page({
       })
     }
   },
+  publishClick() {
+    wx.navigateTo({
+      url: '../publishWork/publishWork',
+    })
+  },
 
-  onReady: function () {},
+  onReady: function () { },
 
 })

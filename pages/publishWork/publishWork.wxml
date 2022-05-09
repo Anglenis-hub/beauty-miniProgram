@@ -1,0 +1,42 @@
+<view class="main">
+  <view wx:if="{{workPhoto === ''}}" class="upload-workimg-btn" bindtap="uploadWorkImg">+</view>
+  <image wx:else src="{{workPhoto}}" mode="widthFix" class="work-img"></image>
+  <input type="text" class="title-input" placeholder="请填写作品关键字" />
+  <view class="information-head">门店信息</view>
+  <!-- <view class="information-name">{{informations.shopName}}</view> -->
+  <input type="text" class="title-input shopname-input" placeholder="请填写门店名称" />
+  <view class="store">
+    <view wx:if="userPhoto !== ''" class="upload-workimg-btn shopimg" bindtap="uploadShopImg">+</view>
+    <!-- <image src="{{informations.shopImageURL}}" class="store-img"></image> -->
+    <view class="details">
+      <view class="detail">
+        <text class="text">地址：</text>
+        <input class="detail-input" placeholder="请填写门店地址" />
+      </view>
+      <view class="detail">
+        <text class="text">人均消费：</text>
+        <input class="detail-input expense" placeholder="请填写人均消费" />
+      </view>
+      <view class="detail">
+        <text class="text">营业时间：</text>
+        <input class="detail-input expense" placeholder="请填写营业时间" />
+      </view>
+    </view>
+  </view>
+  <view class="information-head">技师信息</view>
+  <view class="store">
+    <view wx:if="userPhoto !== ''" class="upload-workimg-btn shopimg" bindtap="uploadStaffImg">+</view>
+    <!-- <image src="{{informations.staffImageURL}}" mode="widthFix" class="staff-img"></image> -->
+    <view class="details">
+      <view class="detail">
+        <view class="staff-name">技师姓名：</view>
+        <input class="name-input" placeholder="请填写姓名" />
+      </view>
+      <view class="detail">
+        <view class="staff-information">技师介绍：</view>
+        <textarea class="describe-input" placeholder="请填写介绍" />
+      </view>
+    </view>
+  </view>
+  <button style="width: 90vw;" class="order-btn" bindtap="publishClick">发布</button>
+</view>

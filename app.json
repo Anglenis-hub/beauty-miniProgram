@@ -6,7 +6,8 @@
     "pages/information/information",
     "pages/order/order",
     "pages/orderResult/orderResult",
-    "pages/myAppointment/myAppointment"
+    "pages/myAppointment/myAppointment",
+    "pages/publishWork/publishWork"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,8 +20,7 @@
     "selectedColor": "#db8b9f",
     "borderStyle": "white",
     "size": 20,
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首 页",
         "iconPath": "static/image/home.png",
