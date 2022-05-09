@@ -51,24 +51,6 @@ Component({
       this.setData({
         num: e.currentTarget.id
       })
-      let imgs = {}
-      dbutils.items.search(e.currentTarget.dataset.inputvalue, e.currentTarget.id).then(res => {
-        console.log(res.data);
-        if (res.data.length === 0) {
-          this.setData({
-            searchedIsNull: true
-          })
-          return
-        } else {
-          this.setData({
-            searchedIsNull: false
-          })
-        }
-        imgs[e.currentTarget.id] = res.data
-        this.setData({
-          imgs: imgs
-        })
-      })
     },
     imgClick: function (e) {
       // console.log('e.currentTarget.dataset', e.currentTarget.dataset)
@@ -89,23 +71,24 @@ Component({
       });
     },
     searchClick: function (e) {
-      // console.log(e.detail.value)
+      const inputValueWithoutWhitespaces = e.detail.value.replace(/\s/g, '')
+      this.setData({
+        inputvalue: inputValueWithoutWhitespaces
+      });
+      if (inputValueWithoutWhitespaces === '') {
+        return
+      }
       let imgs = {}
-      dbutils.items.search(e.detail.value, this.data.num).then(res => {
-        console.log(res.data);
-        if (res.data.length === 0) {
+      let searchedIsNull = {}
+      const types = Object.keys(this.data.imgs)
+      types.forEach(type => {
+        dbutils.items.search(inputValueWithoutWhitespaces, type).then(res => {
+          imgs[type] = res.data
+          searchedIsNull[type] = res.data.length === 0
           this.setData({
-            searchedIsNull: true
+            imgs: imgs,
+            searchedIsNull: searchedIsNull
           })
-          return
-        } else {
-          this.setData({
-            searchedIsNull: false
-          })
-        }
-        imgs[this.data.num] = res.data
-        this.setData({
-          imgs: imgs
         })
       })
     },
@@ -113,23 +96,8 @@ Component({
       this.setData({
         inputvalue: ''
       });
-      //清空搜索内容，获取全部内容
-      let imgs = {}
-      dbutils.items.search('', this.data.num).then(res => {
-        if (res.data.length === 0) {
-          this.setData({
-            searchedIsNull: true
-          })
-          return
-        } else {
-          this.setData({
-            searchedIsNull: false
-          })
-        }
-        imgs[this.data.num] = res.data
-        this.setData({
-          imgs: imgs
-        })
+      wx.redirectTo({
+        url: '../../pages/index/index',
       })
     }
   },
