@@ -28,7 +28,9 @@ App({
           data: res.result.openid
         })
       },
-      fail: console.error
+      fail: function (err) {
+        console.log(err)
+      }
     })
 
     // 检查session是否过期

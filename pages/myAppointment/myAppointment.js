@@ -35,22 +35,32 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  },
+  onLoad: function (options) {},
   cancel(e) {
+    const index = e.currentTarget.dataset.index
+    const pageInfos = this.data.pageInfos
     const thisPage = this
     wx.showModal({
       title: '',
       content: '确认取消吗？',
       success(res) {
         if (res.confirm) {
-          console.log(e.currentTarget.dataset.id)
-          const appointmentID = e.currentTarget.dataset.id
+          const appointmentID = pageInfos[index].appointment.id
           let userAppointments = thisPage.data.appointments
           userAppointments = userAppointments.filter(item => item.id !== appointmentID)
-          dbutils.users.updateAppointments(userAppointments)
-          wx.redirectTo({
-            url: './myAppointment',
+          dbutils.users.updateAppointments(userAppointments).catch(err => {
+            wx.showModal({
+              showCancel: false,
+              title: '',
+              content: '预约取消失败'
+            })
+            thisPage.onShow()
+          })
+          pageInfos.splice(index, 1)
+          thisPage.setData({
+            pageInfos: pageInfos,
+            appointments: userAppointments,
+            isNull: pageInfos.length === 0
           })
         }
       }

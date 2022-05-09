@@ -57,6 +57,7 @@ export const users = {
     })
   },
   updateAppointments(appointments) {
+    // throw new Error('test')
     const openid = wx.getStorageSync('openid')
     return db.collection(userTable).doc(openid).update({
       data: {
@@ -66,6 +67,9 @@ export const users = {
   },
   signUp(name, avatarUrl) {
     const openid = wx.getStorageSync('openid')
+    if (openid === '') {
+      throw new Error('openid is empty')
+    }
     return db.collection(userTable).add({
       data: {
         _id: openid,
@@ -113,17 +117,17 @@ export const items = {
   search(word, type) {
     return db.collection(itemTable).where(_.and(
       [{
-        title: db.RegExp({
-          regexp: word,
-          options: 'i', //大小写不区分
-        })
-      },
-      {
-        type: db.RegExp({
-          regexp: type,
-          options: 'i', //大小写不区分
-        })
-      }
+          title: db.RegExp({
+            regexp: word,
+            options: 'i', //大小写不区分
+          })
+        },
+        {
+          type: db.RegExp({
+            regexp: type,
+            options: 'i', //大小写不区分
+          })
+        }
       ])).get()
   }
 }

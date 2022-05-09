@@ -1,6 +1,6 @@
 <view class="main">
   <view class="null-box" wx:if="{{isNull}}">您还没有预约任何服务项目</view>
-  <view class="order-box" wx:for="{{pageInfos}}" wx:key="item">
+  <view class="order-box" wx:for="{{pageInfos}}" wx:key="index" wx:for-item="item">
     <view class="absoulute">
       <view class="shop-name">{{item.information.shopName}}</view>
       <view class="order-info">
@@ -16,7 +16,7 @@
       </view>
       <view class="line"></view>
       <view class="btns">
-        <view class="btn" bindtap="cancel" data-id="{{item.appointment.id}}">取消预约</view> <!-- 点击后询问是否确认删除，若确认则删除此预约 -->
+        <view class="btn" bindtap="cancel" data-index="{{index}}">取消预约</view> <!-- 点击后询问是否确认删除，若确认则删除此预约 -->
       </view>
     </view>
   </view>

@@ -48,6 +48,7 @@ Page({
         const userName = res.userInfo.nickName
         wx.setStorageSync('avatarUrl', avatarUrl)
         wx.setStorageSync('userName', userName)
+
         // 注册用户
         dbutils.users.signUp(userName, avatarUrl).then(() => {
           // 注册成功后，login
@@ -70,11 +71,7 @@ Page({
         })
       },
       fail: (err) => {
-        wx.showModal({
-          showCancel: false,
-          title: '获取用户信息失败',
-          content: err.errMsg
-        })
+        console.log(err)
       }
     })
   },
@@ -98,8 +95,8 @@ Page({
       userName: '立即登录',
       isLogin: true
     })
-    wx.clearStorage()
-    wx.setStorageSync('sessionIsExpired', true)
+    wx.clearStorageSync()
+    getApp().onLaunch()
   },
   /**
    * 生命周期函数--监听页面加载
