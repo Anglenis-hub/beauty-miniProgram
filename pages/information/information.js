@@ -41,11 +41,20 @@ Page({
 
   loveClick: function (e) {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    const isShop = wx.getStorageSync('isShop')
     if (sessionIsExpired) {
       wx.showModal({
         showCancel: false,
         title: '',
         content: '请登录后收藏'
+      })
+      return
+    }
+    if(isShop) {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '商家无法收藏'
       })
       return
     }
@@ -78,11 +87,20 @@ Page({
   },
   orderClick() {
     const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
+    const isShop = wx.getStorageSync('isShop')
     if (sessionIsExpired) {
       wx.showModal({
         showCancel: false,
         title: '',
         content: '请登录后预约'
+      })
+      return
+    }
+    if(isShop) {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '商家无法预约'
       })
       return
     }

@@ -1,40 +1,53 @@
 <view class="main">
   <view wx:if="{{workPhoto === ''}}" class="upload-workimg-btn" bindtap="uploadWorkImg">+</view>
   <image wx:else src="{{workPhoto}}" mode="widthFix" class="work-img"></image>
-  <input type="text" class="title-input" placeholder="请填写作品关键字" />
+
+  <radio-group class="group" bindchange="radioChange">
+    <view class="label-2" wx:for="{{radioItems}}" wx:key="key">
+      <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+      <label class="label-2-text" for="{{item.name}}"><text>{{item.value}}</text></label>
+    </view>
+  </radio-group>
+
+  <input type="text" value="{{titltValue}}" bindinput="bindTitlteValue" class="title-input" placeholder="请填写作品关键字" />
   <view class="information-head">门店信息</view>
   <!-- <view class="information-name">{{informations.shopName}}</view> -->
-  <input type="text" class="title-input shopname-input" placeholder="请填写门店名称" />
+  <input type="text" value="{{shopnameValue}}" bindinput="bindShopnameValue" class="title-input shopname-input"
+    placeholder="请填写门店名称" />
   <view class="store">
-    <view wx:if="userPhoto !== ''" class="upload-workimg-btn shopimg" bindtap="uploadShopImg">+</view>
-    <!-- <image src="{{informations.shopImageURL}}" class="store-img"></image> -->
+    <view wx:if="{{shopPhoto === ''}}" class="upload-workimg-btn shopimg" bindtap="uploadShopImg">+</view>
+    <image wx:else src="{{shopPhoto}}" mode="widthFix" class="shop-img"></image>
     <view class="details">
       <view class="detail">
         <text class="text">地址：</text>
-        <input class="detail-input" placeholder="请填写门店地址" />
+        <input type="text" value="{{addressValue}}" bindinput="bindAddressValue" class="detail-input"
+          placeholder="请填写门店地址" />
       </view>
       <view class="detail">
         <text class="text">人均消费：</text>
-        <input class="detail-input expense" placeholder="请填写人均消费" />
+        <input type="number" value="{{expenseValue}}" bindinput="bindExpenseValue" class="detail-input expense"
+          placeholder="请填写人均消费" />
       </view>
       <view class="detail">
         <text class="text">营业时间：</text>
-        <input class="detail-input expense" placeholder="请填写营业时间" />
+        <input type="text" value="{{timeValue}}" bindinput="bindTimeValue" class="detail-input expense"
+          placeholder="请填写营业时间" />
       </view>
     </view>
   </view>
   <view class="information-head">技师信息</view>
   <view class="store">
-    <view wx:if="userPhoto !== ''" class="upload-workimg-btn shopimg" bindtap="uploadStaffImg">+</view>
-    <!-- <image src="{{informations.staffImageURL}}" mode="widthFix" class="staff-img"></image> -->
+    <view wx:if="{{staffPhoto === ''}}" class="upload-workimg-btn shopimg" bindtap="uploadStaffImg">+</view>
+    <image wx:else src="{{staffPhoto}}" mode="widthFix" class="shop-img"></image>
     <view class="details">
       <view class="detail">
         <view class="staff-name">技师姓名：</view>
-        <input class="name-input" placeholder="请填写姓名" />
+        <input type="text" value="{{staffnameValue}}" bindinput="bindStaffnameValue" class="name-input"
+          placeholder="请填写姓名" />
       </view>
       <view class="detail">
         <view class="staff-information">技师介绍：</view>
-        <textarea class="describe-input" placeholder="请填写介绍" />
+        <textarea value="{{describeValue}}" bindinput="bindDescribeValue" class="describe-input" placeholder="请填写介绍" />
       </view>
     </view>
   </view>

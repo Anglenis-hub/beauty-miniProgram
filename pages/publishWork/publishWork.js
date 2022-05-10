@@ -1,60 +1,161 @@
-const uploadImg = (page,photo, cloudPath) => {
+const dbutils = require('../../utils/database_driver')
+const uploadImg = (page, photo, cloudPath) => {
   wx.chooseImage({
     count: 1,
     sizeType: ['compressed'],
     sourceType: ['album', 'camera'],
-    success : (res)=>{
-      // console.log('res',res);
+    success: (res) => {
+      console.log('res',res);
       const tempFilePaths = res.tempFilePaths[0];
       page.setData({
         [photo]: tempFilePaths
       })
+      console.log('tempFilePaths', tempFilePaths);
+      console.log('cloudPath', cloudPath);
       wx.cloud.uploadFile({
         cloudPath: cloudPath,
         filePath: res.tempFilePaths[0],
         success: res => {
           // get resource ID
-          console.log(res)
+          page.setData({
+            [photo]: 'cloud://cloud1-2ghfekqc5cf347a4.636c-cloud1-2ghfekqc5cf347a4-1309526496/' + cloudPath
+          })
         },
         fail: err => {
           console.log(err)
         }
       })
-      console.log('tempFilePaths', tempFilePaths);
     }
   })
 }
 
 Page({
   data: {
-    workPhoto: ''
+    type: 'hair',
+    workPhoto: '',
+    shopPhoto: '',
+    staffPhoto: '',
+    titltValue: '',
+    shopnameValue: '',
+    addressValue: '',
+    expenseValue: '',
+    timeValue: '',
+    staffnameValue: '',
+    describeValue: '',
+    radioItems: [
+      { name: 'hair', value: '美发', checked: 'true' },
+      { name: 'makeup', value: '彩妆' },
+      { name: 'nail', value: '美甲' }
+    ],
   },
   onShow() {
 
   },
+  radioChange(e) {
+    const checked = e.detail.value
+    const changed = {}
+    for (let i = 0; i < this.data.radioItems.length; i++) {
+      if (checked.indexOf(this.data.radioItems[i].name) !== -1) {
+        changed['radioItems[' + i + '].checked'] = true
+      } else {
+        changed['radioItems[' + i + '].checked'] = false
+      }
+    }
+    this.setData({
+      type: checked
+    })
+  },
   uploadWorkImg() {
-    let cloudPath = 'images/' + wx.getStorageSync('openid') + Date.now() + '.jpg'
+    let cloudPath = 'images/' + 'workPhoto' + wx.getStorageSync('openid') + Date.now() + '.jpg'
     uploadImg(this, 'workPhoto', cloudPath)
   },
-  uploadShopImg() {},
-  uploadStaffImg() {},
+  uploadShopImg() {
+    let cloudPath = 'images/' + 'shopPhoto' + wx.getStorageSync('openid') + Date.now() + '.jpg'
+    uploadImg(this, 'shopPhoto', cloudPath)
+  },
+  uploadStaffImg() {
+    let cloudPath = 'images/' + 'staffPhoto' + wx.getStorageSync('openid') + Date.now() + '.jpg'
+    uploadImg(this, 'staffPhoto', cloudPath)
+  },
+  bindTitlteValue: function (e) {
+    this.setData({
+      titltValue: e.detail.value
+    })
+    // console.log(this.data.titltValue);
+  },
+  bindShopnameValue: function (e) {
+    this.setData({
+      shopnameValue: e.detail.value
+    })
+  },
+  bindAddressValue: function (e) {
+    this.setData({
+      addressValue: e.detail.value
+    })
+  },
+  bindExpenseValue: function (e) {
+    this.setData({
+      expenseValue: e.detail.value
+    })
+  },
+  bindTimeValue: function (e) {
+    this.setData({
+      timeValue: e.detail.value
+    })
+  },
+  bindStaffnameValue: function (e) {
+    this.setData({
+      staffnameValue: e.detail.value
+    })
+  },
+  bindDescribeValue: function (e) {
+    this.setData({
+      describeValue: e.detail.value
+    })
+  },
+
   publishClick() {
-    uploadImg(this, 'workPhoto', `test/${wx.getStorageSync('openid')}${Date.now()}.jpg`)
-    return
-    let item = {
-      "shopName": '引领潮流',
-      "staffDescription": "从事理发行业近8年时间，全面的技术经验，95%以上顾客满意率",
-      "staffImageURL": 'cloud://cloud1-2ghfekqc5cf347a4.636c-cloud1-2ghfekqc5cf347a4-1309526496/images/staff-female2.jpg',
-      "address": '江西省沈阳县蓟州成都路U座',
-      "shopImageURL": 'cloud://cloud1-2ghfekqc5cf347a4.636c-cloud1-2ghfekqc5cf347a4-1309526496/images/shopImage4.jpg',
-      "staffName": '张美丽',
-      "time": "周一~周日9：00-22：00",
-      "serviceDuration": 180,
-      "title": '可爱美丽短发',
-      "type": 'hair',
-      "imageURL": 'cloud://cloud1-2ghfekqc5cf347a4.636c-cloud1-2ghfekqc5cf347a4-1309526496/images/hair2.jpg',
-      "price": 500
+    if (this.data.shopnameValue==='' || this.data.describeValue==='' || this.data.staffPhoto==='' || this.data.addressValue==='' || this.data.shopPhoto==='' || this.data.staffnameValue==='' || this.data.timeValue==='' || this.data.titltValue==='' || this.data.workPhoto==='' || this.data.expenseValue==='') {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '请填写完整信息'
+      })
+      return
     }
-    dbutils.items.add(item)
-  }
+    let item = {
+      "shopName": this.data.shopnameValue,
+      "staffDescription": this.data.describeValue,
+      "staffImageURL": this.data.staffPhoto,
+      "address": this.data.addressValue,
+      "shopImageURL": this.data.shopPhoto,
+      "staffName": this.data.staffnameValue,
+      "time": this.data.timeValue,
+      "serviceDuration": 180,
+      "title": this.data.titltValue,
+      "type": this.data.type,
+      "imageURL": this.data.workPhoto,
+      "price": this.data.expenseValue
+    }
+    dbutils.items.add(item).then(() => {
+      wx.showModal({
+        showCancel: false,
+        title: '',
+        content: '发布成功',
+        success(res) {
+          wx.redirectTo({
+            url: '../collect/collect',
+          })
+        }
+      })
+    })
+  },
 })
+
+// 春日清透妆容
+// beauty美妆店
+// 杭州市下沙街道22-1
+// 200
+// 工作日8:00-20:00
+// 张宏
+// 曾为多位明星设计妆容。

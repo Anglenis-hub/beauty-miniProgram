@@ -17,6 +17,9 @@ const getHash = (str) => {
 }
 
 export const users = {
+  getAll() {
+    return db.collection(userTable).get()
+  },
   getData() {
     const openid = wx.getStorageSync('openid')
     return db.collection(userTable).doc(openid).get()
@@ -104,14 +107,14 @@ export const items = {
   add(item) {
     const hash = getHash(JSON.stringify(item))
     item['_id'] = hash
-    db.collection(itemTable).add({
-      data: item,
+    return db.collection(itemTable).add({
+      data: item
       // 如果项目已存在，提示错误信息
-      fail: function (res) {
-        if (res.errMsg === '[FailedOperation.DuplicateWrite] multiple write,duplicate key error collection') {
-          console.log("item already exists")
-        }
-      }
+      // fail: function (res) {
+      //   if (res.errMsg === '[FailedOperation.DuplicateWrite] multiple write,duplicate key error collection') {
+      //     console.log("item already exists")
+      //   }
+      // }
     })
   },
   //模糊搜索
@@ -200,7 +203,3 @@ export const getRandomItem = () => {
 
   return data
 }
-//发布作品
-// export const pushWork = (work) => {
-//   dbutils.items.add(item)
-// }

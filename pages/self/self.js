@@ -8,6 +8,7 @@ const login = (page) => {
       let sessionKey = res.signature
       wx.setStorageSync('session_key', sessionKey)
       wx.setStorageSync('sessionIsExpired', false)
+      getApp().onLaunch()
     },
     fail: (err) => {
       wx.showModal({
@@ -24,14 +25,12 @@ const login = (page) => {
   })
   //保存isShop到app.js中使用
   dbutils.users.getData().then(res => {
-    console.log(res.data)
+    // console.log(res.data)
     wx.setStorageSync('isShop', res.data.isShop)
     // page.setData({
     //   isShop: res.data.isShop
     // })
   })
-  
-
 }
 
 Page({

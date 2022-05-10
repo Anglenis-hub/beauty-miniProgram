@@ -17,12 +17,25 @@
   margin: 25rpx auto;
   border-radius: 30rpx;
 }
+.shop-img {
+  width: 200rpx;
+  margin: 0rpx 20rpx 20rpx 0;
+  border-radius: 30rpx;
+}
 .title-input {
   height: 65rpx;
   border:1px solid rgb(150, 150, 150);
   border-radius: 20rpx;
   padding: 0 30rpx;
 }
+
+.group {
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .information-head {
   width: 90vw;
   background-color: rgb(114, 114, 114, 0.2);
@@ -46,7 +59,6 @@
   margin-bottom: 20rpx;
 }
 .shopimg {
-  margin: 25rpx 0;
   height: 200rpx;
   width: 200rpx;
   margin: 0rpx 20rpx 20rpx 0;
@@ -83,7 +95,6 @@
 }
 .staff-name {
   font-size: 30rpx;
-  /* font-weight: 600; */
   margin-bottom: 30rpx;
 }
 .staff-information {
@@ -99,14 +110,13 @@
 .describe-input {
   width: 43vw;
   height: 110rpx;
-  /* line-height: 30rpx; */
   word-break: break-all;
   border:1px solid rgb(150, 150, 150);
   border-radius: 10rpx;
 }
 .order-btn {
-  bottom: -15vh;
-  /* margin: 40rpx 0 50rpx; */
+  bottom: -2vh;
   background-color: rgb(219, 139, 159);
   color: white;
+  margin-bottom: 35rpx;
 }

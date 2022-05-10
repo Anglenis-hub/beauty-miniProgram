@@ -37,15 +37,6 @@ App({
     checkSession().then(() => {
       // 如果session未过期
       wx.setStorageSync('sessionIsExpired', false)
-      const isShop = wx.getStorageSync('isShop')
-      if (isShop) {
-        wx.setTabBarItem({
-          index: 1,
-          text: '作品集',
-          iconPath: '/static/image/works.png',
-          selectedIconPath: '/static/image/worksFill.png'
-        })
-      }
     }).catch(err => {
       // 如果session已过期
       if (err.message === 'session has expired') {
@@ -60,6 +51,22 @@ App({
     })
 
     //判断是否为商家用户
+    const isShop = wx.getStorageSync('isShop')
+    if (isShop) {
+      wx.setTabBarItem({
+        index: 1,
+        text: '作品集',
+        iconPath: '/static/image/works.png',
+        selectedIconPath: '/static/image/worksFill.png'
+      })
+    } else {
+      wx.setTabBarItem({
+        index: 1,
+        text: '收藏',
+        iconPath: "static/image/collect.png",
+        selectedIconPath: "static/image/collectFill1.png"
+      })
+    }
   },
   globalData: {
     userInfo: null
