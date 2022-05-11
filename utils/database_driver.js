@@ -38,6 +38,14 @@ export const users = {
       }
     })
   },
+  pushIdToCollection(id) {
+    const openid = wx.getStorageSync('openid')
+    return db.collection(userTable).doc(openid).update({
+      data: {
+        collections: _.push(id)
+      }
+    })
+  },
   getAppointments() {
     const openid = wx.getStorageSync('openid')
     return db.collection(userTable).doc(openid).field({

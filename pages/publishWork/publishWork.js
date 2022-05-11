@@ -5,7 +5,7 @@ const uploadImg = (page, photo, cloudPath) => {
     sizeType: ['compressed'],
     sourceType: ['album', 'camera'],
     success: (res) => {
-      console.log('res',res);
+      console.log('res', res);
       const tempFilePaths = res.tempFilePaths[0];
       page.setData({
         [photo]: tempFilePaths
@@ -115,7 +115,7 @@ Page({
   },
 
   publishClick() {
-    if (this.data.shopnameValue==='' || this.data.describeValue==='' || this.data.staffPhoto==='' || this.data.addressValue==='' || this.data.shopPhoto==='' || this.data.staffnameValue==='' || this.data.timeValue==='' || this.data.titltValue==='' || this.data.workPhoto==='' || this.data.expenseValue==='') {
+    if (this.data.shopnameValue === '' || this.data.describeValue === '' || this.data.staffPhoto === '' || this.data.addressValue === '' || this.data.shopPhoto === '' || this.data.staffnameValue === '' || this.data.timeValue === '' || this.data.titltValue === '' || this.data.workPhoto === '' || this.data.expenseValue === '') {
       wx.showModal({
         showCancel: false,
         title: '',
@@ -143,8 +143,11 @@ Page({
         title: '',
         content: '发布成功',
         success(res) {
-          wx.redirectTo({
-            url: '../collect/collect',
+          console.log(item['_id']);
+          dbutils.users.pushIdToCollection(item['_id']).then(() => {
+            wx.redirectTo({
+              url: '../collect/collect',
+            })
           })
         }
       })
