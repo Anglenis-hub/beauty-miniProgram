@@ -12,5 +12,5 @@
       <text>></text>
     </view>
   </view>
-  <button wx:if="{{isLogin === false}}" style="width: 90vw;" class="order-btn" bindtap="logoutClick">退出登录</button>
+  <button wx:if="{{didLogin}}" style="width: 90vw;" class="order-btn" bindtap="logoutClick">退出登录</button>
 </view>

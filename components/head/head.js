@@ -22,6 +22,10 @@ Component({
       type: Object,
       value: {}
     },
+    originalImgs: {
+      type: Object,
+      value: {}
+    },
     imgCounts: {
       type: Object,
       value: {}
@@ -80,6 +84,7 @@ Component({
       }
       let imgs = {}
       let searchedIsNull = {}
+      
       const types = Object.keys(this.data.imgs)
       types.forEach(type => {
         dbutils.items.search(inputValueWithoutWhitespaces, type).then(res => {
@@ -94,11 +99,10 @@ Component({
     },
     clearClick() {
       this.setData({
-        inputvalue: ''
+        imgs: this.data.originalImgs,
+        inputvalue: '',
+        searchedIsNull: false
       });
-      wx.redirectTo({
-        url: '../../pages/index/index',
-      })
     }
   },
   observers: {

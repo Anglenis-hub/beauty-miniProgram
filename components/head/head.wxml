@@ -15,7 +15,7 @@
   <view wx:if="{{page === 'collection'}}" class="collect-num">{{collectNumInfo}}</view>
 </view>
 <!-- 搜索空提示 -->
-<view class="null-box" wx:if="{{searchedIsNull[num]}}">未搜索到任何内容</view>
+<view class="null-box" wx:if="{{imgs[num].length === 0}}">没有内容</view>
 
 <view wx:if="{{num === 'all'}}" class="recommended">
   <view wx:for="{{imgs}}" wx:for-item="imgsInType" wx:key="index">

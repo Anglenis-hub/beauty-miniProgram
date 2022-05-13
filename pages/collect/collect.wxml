@@ -1,7 +1,7 @@
 <!--collect.wxml-->
 <view class="main">
   <Head page="collection" tabButton="{{tabButton}}" num="{{num}}" imgs="{{imgs}}" imgCounts="{{imgCounts}}" collectNumInfo="{{collectNumInfo}}"></Head>
-  <button style="width: 90vw;" class="publish-btn" bindtap="publishClick">发布作品</button>
+  <button wx:if="{{didLogin && isShop}}" style="width: 90vw;" class="publish-btn" bindtap="publishClick">发布作品</button>
 </view>
 <!-- <view wx:else>
   <Head page="collection" tabButton="{{tabButton}}" num="{{num}}" imgs="{{imgs}}" imgCounts="{{imgCounts}}" collectNumInfo="{{collectNumInfo}}"></Head>

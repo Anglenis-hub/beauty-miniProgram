@@ -63,7 +63,7 @@
   width: 90vw;
   height: 80rpx;
   line-height: 80rpx;
-  top: 17%;
+  top: 18%;
   left: 50%;
   transform: translate(-50%);
   border-radius: 30rpx;

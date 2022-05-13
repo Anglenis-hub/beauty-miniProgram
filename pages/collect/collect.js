@@ -16,6 +16,7 @@ Page({
     isHidden: 'none',
     collectNumInfo: '',
     isShop: false,
+    didLogin: false,
     userPhoto: ''
   },
   onLoad: function () { },
@@ -50,6 +51,9 @@ Page({
       return
     }
     // 如果用户已登录
+    this.setData({
+      didLogin: true
+    })
     dbutils.users.getCollections().then(_res => {
       const userCollections = _res.data.collections
       dbutils.items.getDataMatchedIDsAndKeys(userCollections, 'type', 'imageURL').then(res => {
