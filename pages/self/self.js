@@ -21,7 +21,7 @@ const login = (page) => {
   page.setData({
     avatarUrl: wx.getStorageSync('avatarUrl'),
     userName: wx.getStorageSync('userName'),
-    isLogin: false //用来显示logout按钮
+    didLogin: true //用来显示logout按钮
   })
   //保存isShop到app.js中使用
   dbutils.users.getData().then(res => {
@@ -40,7 +40,7 @@ Page({
   data: {
     avatarUrl: '',
     userName: '',
-    isLogin: true,
+    didLogin: false,
     isShop: false
   },
   onClickSignup(e) {
@@ -103,7 +103,7 @@ Page({
     this.setData({
       avatarUrl: defaultAvatarUrl,
       userName: '立即登录',
-      isLogin: true
+      didLogin: false
     })
     wx.clearStorageSync()
     getApp().onLaunch()
