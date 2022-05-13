@@ -84,7 +84,7 @@ Component({
       }
       let imgs = {}
       let searchedIsNull = {}
-      
+
       const types = Object.keys(this.data.imgs)
       types.forEach(type => {
         dbutils.items.search(inputValueWithoutWhitespaces, type).then(res => {
@@ -120,7 +120,7 @@ Component({
     },
     'imgCounts, num': function (imgCounts, num) {
       const sessionIsExpired = wx.getStorageSync('sessionIsExpired')
-      if (!sessionIsExpired) {
+      if (!sessionIsExpired && typeof imgCounts[num] !== 'undefined') {
         this.setData({
           collectNumInfo: imgCounts[num] + '件'
         })
